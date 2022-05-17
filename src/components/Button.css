@@ -15,9 +15,13 @@ button:hover {
   background-color: rgb(226, 181, 65);
 }
 
+.zero {
+  grid-column: 1 / 3;
+}
+
 .equal {
-  grid-column: 3 / 5;
   background-color: rgb(243, 61, 29);
+  color: hsl(30, 25%, 89%);
 }
 
 .equals:hover {

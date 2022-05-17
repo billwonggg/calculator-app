@@ -8,7 +8,7 @@ import "./App.css";
 const App = () => {
   const keyPad: (number | string)[][] = [
     ["C", "+-", "%", "/"],
-    [7, 8, 9, "X"],
+    [7, 8, 9, "x"],
     [4, 5, 6, "-"],
     [1, 2, 3, "+"],
     [0, ".", "="],
@@ -22,7 +22,7 @@ const App = () => {
             return (
               <Button
                 key={i}
-                className={val === "=" ? "equal" : ""}
+                className={val === 0 ? "zero" : val === "=" ? "equal" : ""}
                 value={val}
                 onClick={() => {
                   console.log(`${val} clicked`);
