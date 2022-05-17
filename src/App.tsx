@@ -1,5 +1,8 @@
 import React from "react";
 import Calculator from "./components/Calculator";
+import Screen from "./components/Screen";
+import Button from "./components/Button";
+import ButtonBox from "./components/ButtonBox";
 import "./App.css";
 
 const App = () => {
@@ -10,7 +13,27 @@ const App = () => {
     [1, 2, 3, "+"],
     [0, ".", "="],
   ];
-  return <Calculator>hi</Calculator>;
+  return (
+    <div className="App">
+      <Calculator>
+        <Screen value={"0"} />
+        <ButtonBox>
+          {keyPad.flat().map((val: string | number, i: number) => {
+            return (
+              <Button
+                key={i}
+                className={val === "=" ? "equal" : ""}
+                value={val}
+                onClick={() => {
+                  console.log(`${val} clicked`);
+                }}
+              />
+            );
+          })}
+        </ButtonBox>
+      </Calculator>
+    </div>
+  );
 };
 
 export default App;

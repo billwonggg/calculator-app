@@ -2,7 +2,7 @@ import React from "react";
 import "./Screen.css";
 
 interface Display {
-  value: number;
+  value: string;
 }
 
 const Screen = ({ value }: Display) => {

@@ -1,13 +1,12 @@
 #calculator {
   width: 375px;
-  height: 100%;
-  background-color: hsl(224, 36%, 15%);
+  height: 540px;
 }
 
-@media only screen and (min-width: 992px) {
+/* @media only screen and (min-width: 992px) {
   #calculator {
     width: 1440px;
-    height: 100%;
-    background-color: hsl(224, 36%, 15%);
+    height: 540px;
+    background-color: hsl(223, 68%, 32%);
   }
-}
+} */
