@@ -8,19 +8,26 @@ export const handleNumber = (
   data: Calc,
   setData: React.Dispatch<React.SetStateAction<Calc>>
 ): void => {
-  // length too long
-  if (data.first.length >= 16) return;
-  // handle decimal place, use REGEX to check for number of existing decimals
-  if ((val.value === "." && data.first.match(/\./g)) || [].length >= 1) return;
+  const check = (num: string): string | undefined => {
+    // length too long
+    if (num.length >= 16) return;
+    // handle decimal place, use REGEX to check for number of existing decimals
+    if ((val.value === "." && num.match(/\./g)) || [].length >= 1) return;
 
+    let new_num =
+      num === "0" && val.value !== "."
+        ? val.value.toString() // replace the initial 0
+        : num + val.value.toString(); // append to the current number
+    return new_num;
+  };
+
+  const changed = check(data.sign === "" ? data.first : data.second);
+  if (changed === undefined) return;
   setData({
     ...data,
     sign: data.sign,
-    first:
-      data.first === "0" && val.value !== "."
-        ? val.value.toString() // replace the initial 0
-        : data.first + val.value.toString(), // append to the current number
-    second: data.second,
+    first: data.sign === "" ? changed : data.first,
+    second: data.sign !== "" ? changed : data.second,
   });
 };
 
@@ -68,7 +75,16 @@ export const handleOperation = (
   val: Key,
   data: Calc,
   setData: React.Dispatch<React.SetStateAction<Calc>>
-): void => {};
+): void => {
+  if (val.type === "operation") {
+    setData({
+      ...data,
+      sign: val.value,
+      first: data.first,
+      second: data.second,
+    });
+  }
+};
 
 export const handleInvert = (
   data: Calc,
@@ -108,4 +124,16 @@ export const handleEqual = (
     }
     return ans;
   };
+  const res = calculate(
+    Number(data.first),
+    Number(data.second) ?? Number(data.first),
+    data.sign
+  );
+
+  setData({
+    ...data,
+    sign: data.sign,
+    first: res.toString(),
+    second: "0",
+  });
 };

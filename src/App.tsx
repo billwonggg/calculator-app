@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Calculator from "./components/Calculator";
 import Screen from "./components/Screen";
 import Button from "./components/Button";
@@ -15,7 +15,7 @@ import {
 import "./App.css";
 
 export interface Calc {
-  sign: "" | "+" | "-" | "x" | "/";
+  sign: string;
   first: string;
   second: string;
 }
@@ -43,8 +43,10 @@ const App = () => {
         handleDelete(data, setData);
         break;
       case "operation":
+        handleOperation(val, data, setData);
         break;
       case "equal":
+        handleEqual(data, setData);
         break;
       case "invert":
         handleInvert(data, setData);
@@ -58,7 +60,7 @@ const App = () => {
   return (
     <div className="App">
       <Calculator>
-        <Screen value={data.first} />
+        <Screen value={data.second === "0" ? data.first : data.second} />
         <ButtonBox>
           {KeyPad.flat().map((val: Key, i: number) => {
             return (
