@@ -4,7 +4,7 @@ button {
   box-shadow: 0 4px 0 0 hsl(28, 16%, 65%);
   color: hsl(221, 14%, 31%);
   font-family: "League Spartan", sans-serif;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: bold;
   cursor: pointer;
   border-radius: 10px;
@@ -24,6 +24,6 @@ button:hover {
   color: hsl(30, 25%, 89%);
 }
 
-.equals:hover {
+.equal:hover {
   background-color: rgb(228, 39, 15);
 }
