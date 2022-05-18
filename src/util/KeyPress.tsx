@@ -9,18 +9,18 @@ export const handleNumber = (
   setData: React.Dispatch<React.SetStateAction<Calc>>
 ): void => {
   // length too long
-  if (data.input.length >= 16) return;
+  if (data.first.length >= 16) return;
   // handle decimal place, use REGEX to check for number of existing decimals
-  if ((val.value === "." && data.input.match(/\./g)) || [].length >= 1) return;
+  if ((val.value === "." && data.first.match(/\./g)) || [].length >= 1) return;
 
   setData({
     ...data,
     sign: data.sign,
-    input:
-      data.input === "0" && val.value !== "."
+    first:
+      data.first === "0" && val.value !== "."
         ? val.value.toString() // replace the initial 0
-        : data.input + val.value.toString(), // append to the current number
-    result: data.result,
+        : data.first + val.value.toString(), // append to the current number
+    second: data.second,
   });
 };
 
@@ -32,8 +32,8 @@ export const handleReset = (
   setData({
     ...data,
     sign: "",
-    input: "0",
-    result: "0",
+    first: "0",
+    second: "0",
   });
 };
 
@@ -42,24 +42,24 @@ export const handleDelete = (
   data: Calc,
   setData: React.Dispatch<React.SetStateAction<Calc>>
 ): void => {
-  let new_input = data.input;
+  let new_first = data.first;
   let single = false;
   if (
-    data.input.length === 1 ||
-    (data.input.length === 2 && data.sign === "-")
+    data.first.length === 1 ||
+    (data.first.length === 2 && data.first.charAt(0) === "-")
   ) {
     // single digit
-    new_input = "0";
+    new_first = "0";
     single = true;
   } else {
     // remove last element
-    new_input = data.input.slice(0, -1);
+    new_first = data.first.slice(0, -1);
   }
   setData({
     ...data,
-    sign: single ? "" : data.sign,
-    input: new_input,
-    result: data.result,
+    sign: data.sign,
+    first: new_first,
+    second: data.second,
   });
 };
 
@@ -74,12 +74,13 @@ export const handleInvert = (
   data: Calc,
   setData: React.Dispatch<React.SetStateAction<Calc>>
 ): void => {
-  if (data.input === "0") return;
+  if (data.first === "0") return;
   setData({
     ...data,
-    sign: data.sign === "" ? "-" : "",
-    input: data.sign === "" ? "-" + data.input : data.input.slice(1),
-    result: data.result,
+    sign: data.sign,
+    first:
+      data.first.charAt(0) === "-" ? data.first.slice(1) : "-" + data.first,
+    second: data.second,
   });
 };
 

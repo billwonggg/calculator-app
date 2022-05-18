@@ -15,16 +15,16 @@ import {
 import "./App.css";
 
 export interface Calc {
-  sign: "" | "-";
-  input: string;
-  result: string;
+  sign: "" | "+" | "-" | "x" | "/";
+  first: string;
+  second: string;
 }
 
 const App = () => {
   const [data, setData] = useState<Calc>({
     sign: "",
-    input: "0",
-    result: "0",
+    first: "0",
+    second: "0",
   });
 
   /**
@@ -43,7 +43,9 @@ const App = () => {
         handleDelete(data, setData);
         break;
       case "operation":
+        break;
       case "equal":
+        break;
       case "invert":
         handleInvert(data, setData);
         break;
@@ -51,12 +53,12 @@ const App = () => {
   };
 
   console.log(
-    `sign: ${data.sign}\ninput: ${data.input}\nresult: ${data.result}\n`
+    `sign: ${data.sign}\nfirst: ${data.first}\nsecond: ${data.second}\n`
   );
   return (
     <div className="App">
       <Calculator>
-        <Screen value={data.input} />
+        <Screen value={data.first} />
         <ButtonBox>
           {KeyPad.flat().map((val: Key, i: number) => {
             return (
