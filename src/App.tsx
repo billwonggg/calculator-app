@@ -3,6 +3,7 @@ import Calculator from "./components/Calculator";
 import Screen from "./components/Screen";
 import Button from "./components/Button";
 import ButtonBox from "./components/ButtonBox";
+import Header from "./components/Header";
 import { KeyPad, Key } from "./data/KeyPad";
 import {
   handleNumber,
@@ -60,6 +61,7 @@ const App = () => {
   return (
     <div className="App">
       <Calculator>
+        <Header />
         <Screen value={data.second === "0" ? data.first : data.second} />
         <ButtonBox>
           {KeyPad.flat().map((val: Key, i: number) => {
