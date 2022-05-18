@@ -124,11 +124,7 @@ export const handleEqual = (
     }
     return ans;
   };
-  const res = calculate(
-    Number(data.first),
-    Number(data.second) ?? Number(data.first),
-    data.sign
-  );
+  const res = calculate(Number(data.first), Number(data.second), data.sign);
 
   setData({
     ...data,

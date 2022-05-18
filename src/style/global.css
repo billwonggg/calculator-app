@@ -11,7 +11,7 @@
   --color-keypad: hsl(224, 32%, 20%);
 
   --color-button-number: hsl(30, 25%, 89%);
-  --color-button-number-hover: hsl(43, 80%, 69%);
+  --color-button-number-hover: hsl(43, 89%, 76%);
   --color-shadow-button-number: hsl(28, 16%, 65%);
   --color-font-button-number: hsl(221, 14%, 31%);
 
@@ -21,11 +21,11 @@
   --color-font-button-del: #ffffff;
 
   --color-button-operation: hsl(25, 30%, 61%);
-  --color-button-operation-hover: hsl(25, 56%, 54%);
+  --color-button-operation-hover: hsl(25, 45%, 51%);
   --color-shadow-button-operation: hsl(24, 27%, 33%);
   --color-font-button-operation: #ffffff;
 
-  --color-button-result: hsl(6, 63%, 50%);
+  --color-button-result: hsl(6, 58%, 47%);
   --color-button-result-hover: hsl(6, 91%, 54%);
   --color-shadow-button-result: hsl(6, 70%, 34%);
   --color-font-button-result: #ffffff;
