@@ -2,6 +2,7 @@ import React from "react";
 import { Key } from "../data/KeyPad";
 import { Calc } from "../App";
 
+// 1...9 and .
 export const handleNumber = (
   val: Key,
   data: Calc,
@@ -23,6 +24,7 @@ export const handleNumber = (
   });
 };
 
+// AC
 export const handleReset = (
   data: Calc,
   setData: React.Dispatch<React.SetStateAction<Calc>>
@@ -35,31 +37,53 @@ export const handleReset = (
   });
 };
 
+// DEL
 export const handleDelete = (
   data: Calc,
   setData: React.Dispatch<React.SetStateAction<Calc>>
 ): void => {
   let new_input = data.input;
-  if (data.input.length == 1) {
+  let single = false;
+  if (
+    data.input.length === 1 ||
+    (data.input.length === 2 && data.sign === "-")
+  ) {
+    // single digit
     new_input = "0";
+    single = true;
   } else {
     // remove last element
     new_input = data.input.slice(0, -1);
   }
   setData({
     ...data,
-    sign: data.input === "0" ? "" : data.input,
+    sign: single ? "" : data.sign,
     input: new_input,
     result: data.result,
   });
 };
 
+// + - x /
 export const handleOperation = (
   val: Key,
   data: Calc,
   setData: React.Dispatch<React.SetStateAction<Calc>>
 ): void => {};
 
+export const handleInvert = (
+  data: Calc,
+  setData: React.Dispatch<React.SetStateAction<Calc>>
+): void => {
+  if (data.input === "0") return;
+  setData({
+    ...data,
+    sign: data.sign === "" ? "-" : "",
+    input: data.sign === "" ? "-" + data.input : data.input.slice(1),
+    result: data.result,
+  });
+};
+
+// =
 export const handleEqual = (
   data: Calc,
   setData: React.Dispatch<React.SetStateAction<Calc>>

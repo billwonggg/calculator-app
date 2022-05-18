@@ -10,11 +10,12 @@ import {
   handleDelete,
   handleOperation,
   handleEqual,
+  handleInvert,
 } from "./util/KeyPress";
 import "./App.css";
 
 export interface Calc {
-  sign: string;
+  sign: "" | "-";
   input: string;
   result: string;
 }
@@ -43,9 +44,15 @@ const App = () => {
         break;
       case "operation":
       case "equal":
+      case "invert":
+        handleInvert(data, setData);
+        break;
     }
   };
 
+  console.log(
+    `sign: ${data.sign}\ninput: ${data.input}\nresult: ${data.result}\n`
+  );
   return (
     <div className="App">
       <Calculator>

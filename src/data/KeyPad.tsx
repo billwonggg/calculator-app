@@ -7,7 +7,7 @@ export interface Key {
 export const KeyPad: Key[] = [
   { type: "reset", value: "AC", className: "" },
   { type: "delete", value: "DEL", className: "" },
-  { type: "operation", value: "+-", className: "" },
+  { type: "invert", value: "+-", className: "" },
   { type: "operation", value: "/", className: "" },
   { type: "number", value: "7", className: "" },
   { type: "number", value: "8", className: "" },
