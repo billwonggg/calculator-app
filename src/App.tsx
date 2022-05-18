@@ -13,17 +13,17 @@ import {
 } from "./util/KeyPress";
 import "./App.css";
 
-const App = () => {
-  interface Calc {
-    sign: string;
-    input: number;
-    result: number;
-  }
+export interface Calc {
+  sign: string;
+  input: string;
+  result: string;
+}
 
+const App = () => {
   const [data, setData] = useState<Calc>({
     sign: "",
-    input: 0,
-    result: 0,
+    input: "0",
+    result: "0",
   });
 
   /**
@@ -31,10 +31,16 @@ const App = () => {
    * @param val
    * */
   const handleButtonClick = (val: Key): void => {
-    switch (val.className) {
+    switch (val.type) {
       case "number":
+        handleNumber(val, data, setData);
+        break;
       case "reset":
+        handleReset(data, setData);
+        break;
       case "delete":
+        handleDelete(data, setData);
+        break;
       case "operation":
       case "equal":
     }
@@ -43,7 +49,7 @@ const App = () => {
   return (
     <div className="App">
       <Calculator>
-        <Screen value={"0"} />
+        <Screen value={data.input} />
         <ButtonBox>
           {KeyPad.flat().map((val: Key, i: number) => {
             return (
@@ -51,9 +57,7 @@ const App = () => {
                 key={i}
                 className={val.className}
                 value={val.value}
-                onClick={() => {
-                  console.log(`${val.value} clicked`);
-                }}
+                onClick={() => handleButtonClick(val)}
               />
             );
           })}
