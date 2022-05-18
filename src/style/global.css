@@ -9,16 +9,24 @@
   --color-screen: hsl(224, 36%, 15%);
   --color-value: #ffffff;
   --color-keypad: hsl(224, 32%, 20%);
+
   --color-button-number: hsl(30, 25%, 89%);
+  --color-button-number-hover: hsl(43, 80%, 69%);
   --color-shadow-button-number: hsl(28, 16%, 65%);
   --color-font-button-number: hsl(221, 14%, 31%);
-  --color-button-del: hsl(225, 21%, 49%);
-  --color-shadow-button-del: hsl(224, 28%, 35%);
+
+  --color-button-del: hsl(225, 45%, 61%);
+  --color-button-del-hover: hsl(225, 82%, 61%);
+  --color-shadow-button-del: hsl(222, 38%, 35%);
   --color-font-button-del: #ffffff;
-  --color-button-reset: hsl(225, 21%, 49%);
-  --color-shadow-button-reset: hsl(224, 28%, 35%);
-  --color-font-button-reset: #ffffff;
+
+  --color-button-operation: hsl(25, 30%, 61%);
+  --color-button-operation-hover: hsl(25, 56%, 54%);
+  --color-shadow-button-operation: hsl(24, 27%, 33%);
+  --color-font-button-operation: #ffffff;
+
   --color-button-result: hsl(6, 63%, 50%);
+  --color-button-result-hover: hsl(6, 91%, 54%);
   --color-shadow-button-result: hsl(6, 70%, 34%);
   --color-font-button-result: #ffffff;
 }
@@ -34,15 +42,15 @@
   --color-screen: hsl(267, 77%, 12%);
   --color-value: hsl(52, 100%, 62%);
   --color-keypad: hsl(269, 76%, 11%);
+
   --color-button-number: hsl(269, 50%, 20%);
   --color-shadow-button-number: #752893;
   --color-font-button-number: hsl(52, 100%, 62%);
+
   --color-button-del: hsl(281, 89%, 26%);
   --color-shadow-button-del: hsl(285, 91%, 52%);
   --color-font-button-del: #ffffff;
-  --color-button-reset: hsl(281, 89%, 26%);
-  --color-shadow-button-reset: hsl(285, 91%, 52%);
-  --color-font-button-reset: #ffffff;
+
   --color-button-result: hsl(176, 100%, 44%);
   --color-shadow-button-result: hsl(177, 92%, 70%);
   --color-font-button-result: hsl(40, 6%, 21%);
@@ -59,15 +67,15 @@
   --color-screen: hsl(0, 0%, 93%);
   --color-value: #000000;
   --color-keypad: hsl(0, 7%, 81%);
+
   --color-button-number: hsl(45, 7%, 89%);
   --color-shadow-button-number: hsl(35, 11%, 61%);
   --color-font-button-number: hsl(60, 10%, 19%);
+
   --color-button-del: hsl(185, 42%, 37%);
   --color-shadow-button-del: hsl(185, 58%, 25%);
   --color-font-button-del: #ffffff;
-  --color-button-reset: hsl(185, 42%, 37%);
-  --color-shadow-button-reset: hsl(185, 58%, 25%);
-  --color-font-button-reset: #ffffff;
+
   --color-button-result: hsl(25, 98%, 40%);
   --color-shadow-button-result: hsl(25, 99%, 27%);
   --color-font-button-result: #ffffff;

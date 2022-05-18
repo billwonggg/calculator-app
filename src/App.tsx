@@ -58,24 +58,22 @@ const App = () => {
     `sign: ${data.sign}\nfirst: ${data.first}\nsecond: ${data.second}\n`
   );
   return (
-    <div className="App">
-      <Calculator>
-        <Header />
-        <Screen value={data.second === "0" ? data.first : data.second} />
-        <ButtonBox>
-          {KeyPad.flat().map((val: Key, i: number) => {
-            return (
-              <Button
-                key={i}
-                className={val.className}
-                value={val.value}
-                onClick={() => handleButtonClick(val)}
-              />
-            );
-          })}
-        </ButtonBox>
-      </Calculator>
-    </div>
+    <Calculator>
+      <Header />
+      <Screen value={data.second === "0" ? data.first : data.second} />
+      <ButtonBox>
+        {KeyPad.flat().map((val: Key, i: number) => {
+          return (
+            <Button
+              key={i}
+              className={val.className}
+              value={val.value}
+              onClick={() => handleButtonClick(val)}
+            />
+          );
+        })}
+      </ButtonBox>
+    </Calculator>
   );
 };
 
