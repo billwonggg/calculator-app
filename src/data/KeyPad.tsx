@@ -23,5 +23,5 @@ export const KeyPad: Key[] = [
   { type: "operation", value: "+", className: "" },
   { type: "number", value: "0", className: "zero" },
   { type: "number", value: ".", className: "" },
-  { type: "result", value: "=", className: "equal" },
+  { type: "equal", value: "=", className: "equal" },
 ];
