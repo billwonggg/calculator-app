@@ -1,5 +1,3 @@
-import "./Button.css";
-
 interface ButtonProps {
   className: string;
   value: string | number;

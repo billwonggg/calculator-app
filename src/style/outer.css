@@ -1,0 +1,27 @@
+html {
+  box-sizing: border-box;
+  background: var(--color-background);
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  font-family: "League Spartan", sans-serif;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  background-color: transparent;
+  margin: 0;
+  font-size: 32px;
+  padding: 0 var(--white-space);
+}
+
+div[id="root"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  background-color: transparent;
+}

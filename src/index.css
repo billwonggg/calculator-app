@@ -1,8 +1,6 @@
-body {
-  margin: 0;
-  width: 100%;
-  font-size: 32px;
-  font-family: "League Spartan", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import "./style/global.css";
+@import "./style/normalise.css";
+@import "./style/outer.css";
+@import "./style/components.css";
+@import "./style/media.css";
+@import "./style/button.css";

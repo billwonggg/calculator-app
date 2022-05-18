@@ -1,5 +1,3 @@
-import "./Screen.css";
-
 interface Display {
   value: string;
 }

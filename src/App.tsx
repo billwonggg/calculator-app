@@ -13,7 +13,6 @@ import {
   handleEqual,
   handleInvert,
 } from "./util/KeyPress";
-import "./App.css";
 
 export interface Calc {
   sign: string;
