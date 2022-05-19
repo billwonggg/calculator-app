@@ -7,10 +7,6 @@ html {
 }
 
 body {
-  /* width: 100%;
-  height: auto;
-  min-height: 100vh; */
-  /* background-color: transparent; */
   margin: 0;
   font-size: 32px;
   padding: 0 var(--white-space);
@@ -20,9 +16,10 @@ body {
 
 .App {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-color: transparent;
 }
