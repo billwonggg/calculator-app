@@ -10,7 +10,7 @@ export const handleNumber = (
 ): void => {
   const check = (num: string): string | undefined => {
     // length too long
-    if (num.length >= 16) return;
+    if (num.length >= 10) return;
     // handle decimal place, use REGEX to check for number of existing decimals
     if ((val.value === "." && num.match(/\./g)) || [].length >= 1) return;
 

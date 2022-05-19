@@ -14,14 +14,15 @@ body {
   margin: 0;
   font-size: 32px;
   padding: 0 var(--white-space);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 div[id="root"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: auto;
+  width: 100vw;
   min-height: 100vh;
   background-color: transparent;
 }
