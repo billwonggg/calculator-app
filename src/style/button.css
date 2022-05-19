@@ -10,18 +10,18 @@ button {
   border-radius: 10px;
   cursor: pointer;
   outline: none;
-  transition: box-shadow 90ms ease, transform 90ms ease;
+  transition: box-shadow 100ms ease, transform 100ms ease;
 }
 
-.button:active {
-  transform: translateY(4px);
+button:active {
+  transform: translateY(5px);
   box-shadow: none;
 }
 
 .number {
   color: var(--color-font-button-number);
   background-color: var(--color-button-number);
-  box-shadow: 0 4px 0 0 var(--color-shadow-button-number);
+  box-shadow: 0 5px 0 0 var(--color-shadow-button-number);
 }
 
 .number:hover {
@@ -31,7 +31,7 @@ button {
 .operation {
   color: var(--color-font-button-operation);
   background-color: var(--color-button-operation);
-  box-shadow: 0 4px 0 0 var(--color-shadow-button-operation);
+  box-shadow: 0 5px 0 0 var(--color-shadow-button-operation);
 }
 
 .operation:hover {
@@ -41,7 +41,7 @@ button {
 .delete {
   color: var(--color-font-button-del);
   background-color: var(--color-button-del);
-  box-shadow: 0 4px 0 0 var(--color-shadow-button-del);
+  box-shadow: 0 5px 0 0 var(--color-shadow-button-del);
 }
 
 .delete:hover {
@@ -55,7 +55,7 @@ button {
 .equal {
   color: var(--color-font-button-result);
   background-color: var(--color-button-result);
-  box-shadow: 0 4px 0 0 var(--color-shadow-button-result);
+  box-shadow: 0 5px 0 0 var(--color-shadow-button-result);
 }
 
 .equal:hover {
