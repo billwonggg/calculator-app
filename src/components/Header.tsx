@@ -3,8 +3,10 @@ import Theme from "./Theme";
 const Header = () => {
   return (
     <div className="header">
-      <h1 className="logo">Calculator</h1>
-      <Theme />
+      <section className="header-section">
+        <h1 className="logo">Calculator</h1>
+        <Theme />
+      </section>
     </div>
   );
 };

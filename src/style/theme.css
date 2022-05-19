@@ -1,13 +1,13 @@
-.theme-wrapper {
-  float: right;
-}
-
 .logo {
   color: var(--color-font-theme);
   margin: 0;
-  font-size: 28px;
+  font-size: 30px;
   user-select: none;
   float: left;
+}
+
+.theme-wrapper {
+  float: right;
 }
 
 .theme-slider {

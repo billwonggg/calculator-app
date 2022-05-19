@@ -5,4 +5,12 @@
     padding: 0px 15px;
     box-sizing: border-box;
   }
+
+  button {
+    font-size: 32px !important;
+  }
+
+  .buttonbox {
+    grid-gap: 20px !important;
+  }
 }

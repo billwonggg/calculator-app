@@ -2,15 +2,22 @@
   height: 40px;
   width: 100%;
   padding: 0px 10px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   color: white;
   box-sizing: border-box;
+}
+
+.header-section {
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  height: 3rem;
+  width: 100%;
 }
 
 .calculator {
   width: 380px;
   height: 590px;
-  padding: 0px 15px;
   box-sizing: border-box;
 }
 
@@ -33,9 +40,9 @@
   width: 100%;
   height: calc(100% - 165px);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-gap: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  grid-gap: 15px;
   background-color: var(--color-keypad);
   padding: var(--white-space);
   border-radius: 15px;

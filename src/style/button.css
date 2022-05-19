@@ -1,10 +1,11 @@
 button {
+  width: 100%;
   border: none;
   display: grid;
   place-items: center;
-  padding-top: 5px;
+  padding: 5px 0px 0px 0px;
   font-family: "League Spartan", sans-serif;
-  font-size: 32px;
+  font-size: 20px;
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
@@ -18,7 +19,6 @@ button {
 }
 
 .number {
-  font-size: 40px;
   color: var(--color-font-button-number);
   background-color: var(--color-button-number);
   box-shadow: 0 4px 0 0 var(--color-shadow-button-number);
