@@ -3,7 +3,7 @@ import Theme from "./Theme";
 const Header = () => {
   return (
     <div className="header">
-      Calculator
+      <h1 className="logo">Calculator</h1>
       <Theme />
     </div>
   );
