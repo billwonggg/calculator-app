@@ -7,10 +7,10 @@ html {
 }
 
 body {
-  width: 100%;
+  /* width: 100%;
   height: auto;
-  min-height: 100vh;
-  background-color: transparent;
+  min-height: 100vh; */
+  /* background-color: transparent; */
   margin: 0;
   font-size: 32px;
   padding: 0 var(--white-space);
@@ -18,11 +18,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-div[id="root"] {
+.App {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   background-color: transparent;
 }

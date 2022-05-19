@@ -5,7 +5,7 @@
 .logo {
   color: var(--color-font-theme);
   margin: 0;
-  font-size: 26px;
+  font-size: 28px;
   user-select: none;
   float: left;
 }
@@ -13,27 +13,27 @@
 .theme-slider {
   position: relative;
   -webkit-appearance: none;
-  width: 55px;
+  width: 58px;
   background-color: transparent;
 }
 
 .theme-slider::before {
   position: absolute;
   content: "THEME";
-  top: 5px;
-  right: 130%;
-  font-size: 12px;
+  top: 4px;
+  right: 120%;
+  font-size: 14px;
   color: var(--color-font-theme);
 }
 
 .theme-slider::after {
   position: absolute;
   content: "1 \00a0 \00a0 2 \00a0 \00a0 3";
-  top: -22px;
+  top: -20px;
   right: 0;
   width: 100%;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--color-font-123);
 }
 
