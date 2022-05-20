@@ -12,12 +12,29 @@ test("renders calculator text", () => {
   expect(textElement).toBeTruthy();
 });
 
-describe("check buttons", () => {
-  test("numbers 0-9", () => {
+describe("Check button text", () => {
+  beforeEach(() => {
     render(<App />);
+  });
+  test("numbers 0-9 text", () => {
     for (let i = 0; i <= 9; i++) {
       const num = screen.getByText(i.toString(), { selector: "button" });
       expect(num).toBeTruthy();
     }
+  });
+
+  test("operation button text", () => {
+    const operations = ["+", "-", "x", "/", "+-"];
+    operations.forEach((element) => {
+      const res = screen.getByText(element, { selector: "button" });
+      expect(res).toBeTruthy();
+    });
+  });
+  test("other button text", () => {
+    const other = ["=", "AC", "DEL", "."];
+    other.forEach((element) => {
+      const res = screen.getByText(element, { selector: "button" });
+      expect(res).toBeTruthy();
+    });
   });
 });
