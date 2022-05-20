@@ -20,6 +20,8 @@
   height: 590px;
   padding: 0px 10px;
   box-sizing: border-box;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .screen {
@@ -50,15 +52,11 @@
   box-sizing: border-box;
 }
 
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 20px;
-  width: 100%;
+footer {
   font-size: 1.1rem;
   text-align: center;
-  padding: 10px 0px 0px 2px;
   color: var(--color-font-theme);
+  padding-bottom: 15px;
 }
 
 a {
