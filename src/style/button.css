@@ -48,7 +48,6 @@ button:active {
 
 .delete:hover {
   background-color: var(--color-button-del-hover);
-  color: #fff;
 }
 
 .big {

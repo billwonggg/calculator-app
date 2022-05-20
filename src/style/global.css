@@ -1,7 +1,6 @@
 :is(:root, :root[data-theme="neutral"]) {
   --radius: 12px;
   --white-space: 20px;
-  /* --color-background: hsl(222, 26%, 31%); */
   --color-background: linear-gradient(to top, hsl(222, 26%, 31%), #2a4c83);
   --color-track: hsl(223, 31%, 20%);
   --color-thumb: hsl(6, 63%, 50%);
@@ -13,7 +12,7 @@
   --color-keypad: hsl(224, 32%, 20%);
 
   --color-button-number: hsl(30, 25%, 89%);
-  --color-button-number-hover: hsl(43, 89%, 76%);
+  --color-button-number-hover: hsl(43, 83%, 79%);
   --color-shadow-button-number: hsl(28, 16%, 65%);
   --color-font-button-number: hsl(221, 14%, 31%);
 
@@ -28,7 +27,7 @@
   --color-font-button-operation: #ffffff;
 
   --color-button-result: hsl(6, 58%, 47%);
-  --color-button-result-hover: hsl(6, 91%, 54%);
+  --color-button-result-hover: hsl(6, 75%, 51%);
   --color-shadow-button-result: hsl(6, 70%, 34%);
   --color-font-button-result: #ffffff;
 }
@@ -52,7 +51,7 @@
   --color-font-button-number: #fff;
 
   --color-button-del: rgb(42, 26, 30);
-  --color-button-del-hover: rgb(97, 33, 48);
+  --color-button-del-hover: rgb(58, 30, 37);
   --color-shadow-button-del: rgb(36, 21, 24);
   --color-font-button-del: rgb(212, 78, 79);
 
@@ -76,7 +75,7 @@
   --color-font-theme: #000000;
   --color-font-123: #000000;
   --color-font-link: #f48e8e;
-  --color-screen: hsl(0, 0%, 93%);
+  --color-screen: hsl(0, 6%, 85%);
   --color-value: #000000;
   --color-keypad: hsl(0, 7%, 81%);
 
@@ -86,16 +85,17 @@
   --color-font-button-number: hsl(60, 10%, 19%);
 
   --color-button-del: hsl(185, 42%, 37%);
+  --color-button-del-hover: hsl(185, 60%, 42%);
   --color-shadow-button-del: hsl(185, 58%, 25%);
   --color-font-button-del: #ffffff;
 
-  --color-button-operation: hsl(25, 30%, 61%);
-  --color-button-operation-hover: hsl(25, 45%, 51%);
-  --color-shadow-button-operation: hsl(24, 27%, 33%);
+  --color-button-operation: hsl(25, 32%, 69%);
+  --color-button-operation-hover: hsl(25, 50%, 58%);
+  --color-shadow-button-operation: hsl(25, 24%, 50%);
   --color-font-button-operation: #ffffff;
 
   --color-button-result: hsl(25, 98%, 40%);
-  --color-button-result-hover: hsl(6, 91%, 54%);
+  --color-button-result-hover: hsl(6, 75%, 51%);
   --color-shadow-button-result: hsl(25, 99%, 27%);
   --color-font-button-result: #ffffff;
 }
