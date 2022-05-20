@@ -1,7 +1,8 @@
 :is(:root, :root[data-theme="neutral"]) {
   --radius: 12px;
   --white-space: 20px;
-  --color-background: hsl(222, 26%, 31%);
+  /* --color-background: hsl(222, 26%, 31%); */
+  --color-background: linear-gradient(to top, hsl(222, 26%, 31%), #2a4c83);
   --color-track: hsl(223, 31%, 20%);
   --color-thumb: hsl(6, 63%, 50%);
   --color-font-theme: #ffffff;
@@ -35,26 +36,35 @@
 :root[data-theme="dark"] {
   --radius: 12px;
   --white-space: 20px;
-  --color-background: hsl(268, 75%, 9%);
-  --color-track: hsl(268, 71%, 12%);
+  --color-background: linear-gradient(to bottom, #434343, #000000);
+  --color-track: rgb(23, 24, 26);
   --color-thumb: hsl(176, 100%, 44%);
-  --color-font-theme: hsl(52, 100%, 62%);
-  --color-font-123: hsl(52, 100%, 62%);
-  --color-screen: hsl(267, 77%, 12%);
-  --color-value: hsl(52, 100%, 62%);
-  --color-keypad: hsl(269, 76%, 11%);
+  --color-font-theme: rgb(225, 247, 235);
+  --color-font-123: rgb(225, 247, 235);
+  --color-font-link: #f48e8e;
+  --color-screen: rgb(23, 24, 26);
+  --color-value: #fff;
+  --color-keypad: rgb(23, 24, 26);
 
-  --color-button-number: hsl(269, 50%, 20%);
-  --color-shadow-button-number: #752893;
-  --color-font-button-number: hsl(52, 100%, 62%);
+  --color-button-number: rgb(34, 36, 39);
+  --color-button-number-hover: rgb(70, 72, 74);
+  --color-shadow-button-number: rgb(32, 31, 30);
+  --color-font-button-number: #fff;
 
-  --color-button-del: hsl(281, 89%, 26%);
-  --color-shadow-button-del: hsl(285, 91%, 52%);
-  --color-font-button-del: #ffffff;
+  --color-button-del: rgb(42, 26, 30);
+  --color-button-del-hover: rgb(97, 33, 48);
+  --color-shadow-button-del: rgb(36, 21, 24);
+  --color-font-button-del: rgb(212, 78, 79);
 
-  --color-button-result: hsl(176, 100%, 44%);
-  --color-shadow-button-result: hsl(177, 92%, 70%);
-  --color-font-button-result: hsl(40, 6%, 21%);
+  --color-button-operation: rgb(241, 154, 55);
+  --color-button-operation-hover: rgb(252, 208, 63);
+  --color-shadow-button-operation: rgb(133, 82, 24);
+  --color-font-button-operation: #ffffff;
+
+  --color-button-result: rgb(100, 198, 123);
+  --color-button-result-hover: rgb(64, 226, 151);
+  --color-shadow-button-result: rgb(37, 100, 51);
+  --color-font-button-result: #fff;
 }
 
 :root[data-theme="light"] {
@@ -65,11 +75,13 @@
   --color-thumb: hsl(25, 98%, 40%);
   --color-font-theme: #000000;
   --color-font-123: #000000;
+  --color-font-link: #f48e8e;
   --color-screen: hsl(0, 0%, 93%);
   --color-value: #000000;
   --color-keypad: hsl(0, 7%, 81%);
 
   --color-button-number: hsl(45, 7%, 89%);
+  --color-button-number-hover: hsl(43, 89%, 76%);
   --color-shadow-button-number: hsl(35, 11%, 61%);
   --color-font-button-number: hsl(60, 10%, 19%);
 
@@ -77,7 +89,13 @@
   --color-shadow-button-del: hsl(185, 58%, 25%);
   --color-font-button-del: #ffffff;
 
+  --color-button-operation: hsl(25, 30%, 61%);
+  --color-button-operation-hover: hsl(25, 45%, 51%);
+  --color-shadow-button-operation: hsl(24, 27%, 33%);
+  --color-font-button-operation: #ffffff;
+
   --color-button-result: hsl(25, 98%, 40%);
+  --color-button-result-hover: hsl(6, 91%, 54%);
   --color-shadow-button-result: hsl(25, 99%, 27%);
   --color-font-button-result: #ffffff;
 }
