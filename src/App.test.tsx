@@ -2,8 +2,8 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("hello world", () => {
-  expect("hello world").toContain("hello");
+test("Hello Jest", () => {
+  expect("Hello Jest").toContain("Jest");
 });
 
 test("renders calculator text", () => {
@@ -24,15 +24,15 @@ describe("Check button text", () => {
   });
 
   test("operation button text", () => {
-    const operations = ["+", "-", "x", "/", "+-"];
-    operations.forEach((element) => {
+    const operations: string[] = ["+", "-", "x", "/", "+-"];
+    operations.forEach((element: string) => {
       const res = screen.getByText(element, { selector: "button" });
       expect(res).toBeTruthy();
     });
   });
   test("other button text", () => {
-    const other = ["=", "AC", "DEL", "."];
-    other.forEach((element) => {
+    const other: string[] = ["=", "AC", "DEL", "."];
+    other.forEach((element: string) => {
       const res = screen.getByText(element, { selector: "button" });
       expect(res).toBeTruthy();
     });
