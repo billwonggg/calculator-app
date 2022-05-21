@@ -3,7 +3,7 @@ interface Display {
 }
 
 const Screen = ({ value }: Display) => {
-  return <div className="screen">{value}</div>;
+  return <div id="screen">{value}</div>;
 };
 
 export default Screen;
