@@ -102,4 +102,28 @@ describe("Calculator functionality", () => {
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual((45879 - 26543).toString());
   });
+
+  test("Basic multiplication small", () => {
+    const dom = setup();
+    buttonPress("3", "x", "1", "2", "=");
+    dom.container.querySelector("#screen");
+    const res = dom.container.querySelector("#screen");
+    expect(res?.innerHTML).toEqual((3 * 12).toString());
+  });
+
+  test("Basic multiplication negative", () => {
+    const dom = setup();
+    buttonPress("1", "1", "+-", "x", "1", "1", "=");
+    dom.container.querySelector("#screen");
+    const res = dom.container.querySelector("#screen");
+    expect(res?.innerHTML).toEqual((-11 * 11).toString());
+  });
+
+  test("Basic multiplication large", () => {
+    const dom = setup();
+    buttonPress("4", "5", "8", "7", "9", "x", "2", "6", "5", "4", "3", "=");
+    dom.container.querySelector("#screen");
+    const res = dom.container.querySelector("#screen");
+    expect(res?.innerHTML).toEqual((45879 * 26543).toString());
+  });
 });

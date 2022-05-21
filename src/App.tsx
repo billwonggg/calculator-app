@@ -55,9 +55,9 @@ const App = () => {
     }
   };
 
-  console.log(
-    `sign: ${data.sign}\nfirst: ${data.first}\nsecond: ${data.second}\n`
-  );
+  // console.log(
+  //   `sign: ${data.sign}\nfirst: ${data.first}\nsecond: ${data.second}\n`
+  // );
   return (
     <>
       <div className="App">
