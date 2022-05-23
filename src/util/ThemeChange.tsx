@@ -1,4 +1,4 @@
-import Theme, { ThemeOptions } from "../components/Theme";
+import { ThemeOptions } from "../components/Theme";
 
 const getLocalColorScheme = () => localStorage.getItem("colorScheme");
 
@@ -6,18 +6,23 @@ const setLocalColorScheme = (color: ThemeOptions) => {
   localStorage.setItem("colorScheme", color);
 };
 
-export const getTheme = () => {
+export const getTheme = (): ThemeOptions => {
   const preferDarkScheme =
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  let finalColorScheme: string;
+  let finalColorScheme: ThemeOptions = "neutral";
   const localColorScheme = getLocalColorScheme();
-
-  localColorScheme !== null
-    ? (finalColorScheme = localColorScheme)
-    : (finalColorScheme = preferDarkScheme ? "dark" : "neutral");
-
+  if (localColorScheme === null) {
+    finalColorScheme = preferDarkScheme ? "dark" : "light";
+  } else {
+    if (
+      localColorScheme === "neutral" ||
+      localColorScheme === "light" ||
+      localColorScheme === "dark"
+    )
+      finalColorScheme = localColorScheme;
+  }
   return finalColorScheme;
 };
 

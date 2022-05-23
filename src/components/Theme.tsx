@@ -1,19 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getTheme, updateTheme } from "../util/ThemeChange";
 
 export type ThemeOptions = "neutral" | "light" | "dark";
 
 const Theme = () => {
   const COLOR_THEME: ThemeOptions[] = ["neutral", "light", "dark"];
-  const COLOR_CODE: string[] = ["#3a4764", "#e6e6e6", "#160628"];
-  const [theme, setTheme] = useState<ThemeOptions>("neutral");
+  const [theme, setTheme] = useState<ThemeOptions>(getTheme());
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const idx = Number(e.target.value);
     const newTheme = COLOR_THEME[idx - 1];
     setTheme(newTheme);
-    updateTheme(newTheme);
   };
+
+  const handleColorChange = (e: MediaQueryListEvent) => {
+    const newColorScheme = e.matches ? "dark" : "light";
+    setTheme(newColorScheme);
+  };
+
+  useEffect(() => {
+    updateTheme(theme);
+  }, [theme]);
+
+  // listen for system theme changes
+  useEffect(() => {
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+    darkThemeMq.addEventListener("change", (e) => handleColorChange(e));
+    // window
+    //   .matchMedia("(prefers-color-scheme: dark)")
+    //   .addEventListener("change", (e) => handleColorChange(e));
+    // return window
+    //   .matchMedia("(prefers-color-scheme: dark)")
+    //   .removeEventListener("change", (e) => handleColorChange(e));
+    return () =>
+      darkThemeMq.removeEventListener("change", (e) => handleColorChange(e));
+  }, []);
 
   return (
     <div className="theme-wrapper">

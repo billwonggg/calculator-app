@@ -3,6 +3,17 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
 
+// Jest DOM doesn't support window match media
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addEventListener: function () {},
+      removeEventListener: function () {},
+    };
+  };
+
 test("Hello Jest", () => {
   expect("Hello Jest").toContain("Jest");
 });
