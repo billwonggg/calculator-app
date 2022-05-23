@@ -60,6 +60,15 @@ const buttonPress = (...args: string[]): void => {
 };
 
 describe("Clear and Delete button", () => {
+  test("Clear all", () => {
+    const dom = setup();
+    const res = dom.container.querySelector("#screen");
+    buttonPress("5", "9", "9", "+-");
+    expect(res?.innerHTML).toEqual("-599");
+    buttonPress("AC");
+    expect(res?.innerHTML).toEqual("0");
+  });
+
   test("Delete numbers positive", () => {
     const dom = setup();
     const res = dom.container.querySelector("#screen");
@@ -86,13 +95,25 @@ describe("Clear and Delete button", () => {
     expect(res?.innerHTML).toEqual("0");
   });
 
-  test("Clear all", () => {
+  test("Delete first number during expression", () => {
     const dom = setup();
     const res = dom.container.querySelector("#screen");
-    buttonPress("5", "9", "9", "+-");
-    expect(res?.innerHTML).toEqual("-599");
-    buttonPress("AC");
-    expect(res?.innerHTML).toEqual("0");
+    buttonPress("5", "0", "DEL", "+", "4", "0", "=");
+    expect(res?.innerHTML).toEqual((5 + 40).toString());
+  });
+
+  test("Delete second number during expression", () => {
+    const dom = setup();
+    const res = dom.container.querySelector("#screen");
+    buttonPress("5", "0", "+", "4", "0", "DEL", "=");
+    expect(res?.innerHTML).toEqual((50 + 4).toString());
+  });
+
+  test("Delete both numbers during expression", () => {
+    const dom = setup();
+    const res = dom.container.querySelector("#screen");
+    buttonPress("5", "0", "DEL", "+", "4", "0", "DEL", "=");
+    expect(res?.innerHTML).toEqual((5 + 4).toString());
   });
 });
 
