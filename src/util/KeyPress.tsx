@@ -49,24 +49,24 @@ export const handleDelete = (
   data: Calc,
   setData: React.Dispatch<React.SetStateAction<Calc>>
 ): void => {
-  let new_first = data.first;
-  let single = false;
-  if (
-    data.first.length === 1 ||
-    (data.first.length === 2 && data.first.charAt(0) === "-")
-  ) {
-    // single digit
-    new_first = "0";
-    single = true;
-  } else {
-    // remove last element
-    new_first = data.first.slice(0, -1);
-  }
+  const del = (num: string): string => {
+    if (num === "0") return num;
+    let new_first = num;
+    if (num.length === 1 || (num.length === 2 && num.charAt(0) === "-")) {
+      // single digit
+      new_first = "0";
+    } else {
+      // remove last element
+      new_first = num.slice(0, -1);
+    }
+    return new_first;
+  };
+  const changed = del(data.sign === "" ? data.first : data.second);
   setData({
     ...data,
     sign: data.sign,
-    first: new_first,
-    second: data.second,
+    first: data.sign === "" ? changed : data.first,
+    second: data.sign !== "" ? changed : data.second,
   });
 };
 
@@ -90,13 +90,17 @@ export const handleInvert = (
   data: Calc,
   setData: React.Dispatch<React.SetStateAction<Calc>>
 ): void => {
-  if (data.first === "0") return;
+  const invert = (num: string): string => {
+    if (num === "0") return num;
+    return num.charAt(0) === "-" ? num.slice(1) : "-" + num;
+  };
+
+  const changed = invert(data.sign === "" ? data.first : data.second);
   setData({
     ...data,
     sign: data.sign,
-    first:
-      data.first.charAt(0) === "-" ? data.first.slice(1) : "-" + data.first,
-    second: data.second,
+    first: data.sign === "" ? changed : data.first,
+    second: data.sign !== "" ? changed : data.second,
   });
 };
 
@@ -128,7 +132,7 @@ export const handleEqual = (
 
   setData({
     ...data,
-    sign: data.sign,
+    sign: "",
     first: res.toString(),
     second: "0",
   });
