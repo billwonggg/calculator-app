@@ -200,14 +200,14 @@ describe("One expression tests", () => {
     const dom = setup();
     buttonPress("5", "2", "/", "6", "=");
     const res = dom.container.querySelector("#screen");
-    expect(res?.innerHTML).toEqual((52 / 6).toString());
+    expect(res?.innerHTML).toEqual((52 / 6).toPrecision(5));
   });
 
   test("Basic division large", () => {
     const dom = setup();
     buttonPress("4", "5", "8", "7", "9", "/", "2", "6", "5", "4", "3", "=");
     const res = dom.container.querySelector("#screen");
-    expect(res?.innerHTML).toEqual((45879 / 26543).toString());
+    expect(res?.innerHTML).toEqual((45879 / 26543).toPrecision(5));
   });
 
   test("Basic division negative", () => {
