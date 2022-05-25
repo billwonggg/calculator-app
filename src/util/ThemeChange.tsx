@@ -8,8 +8,7 @@ const setLocalColorScheme = (color: ThemeOptions) => {
 
 export const getTheme = (): ThemeOptions => {
   const preferDarkScheme =
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches;
+    window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
   let finalColorScheme: ThemeOptions = "neutral";
   const localColorScheme = getLocalColorScheme();

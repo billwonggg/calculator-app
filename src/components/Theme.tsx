@@ -26,14 +26,7 @@ const Theme = () => {
   useEffect(() => {
     const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
     darkThemeMq.addEventListener("change", (e) => handleColorChange(e));
-    // window
-    //   .matchMedia("(prefers-color-scheme: dark)")
-    //   .addEventListener("change", (e) => handleColorChange(e));
-    // return window
-    //   .matchMedia("(prefers-color-scheme: dark)")
-    //   .removeEventListener("change", (e) => handleColorChange(e));
-    return () =>
-      darkThemeMq.removeEventListener("change", (e) => handleColorChange(e));
+    return () => darkThemeMq.removeEventListener("change", (e) => handleColorChange(e));
   }, []);
 
   return (

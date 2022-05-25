@@ -76,14 +76,12 @@ export const handleOperation = (
   data: Calc,
   setData: React.Dispatch<React.SetStateAction<Calc>>
 ): void => {
-  if (val.type === "operation") {
-    setData({
-      ...data,
-      sign: val.value,
-      first: data.first,
-      second: data.second,
-    });
-  }
+  setData({
+    ...data,
+    sign: val.value,
+    first: data.first,
+    second: data.second,
+  });
 };
 
 export const handleInvert = (
@@ -106,40 +104,32 @@ export const handleInvert = (
 
 // =
 export const handleEqual = (
+  newSign: string,
   data: Calc,
   setData: React.Dispatch<React.SetStateAction<Calc>>
 ): void => {
   if (data.sign === "") return;
   const calculate = (a: number, b: number, sign: string): number => {
     let ans = 0;
-    switch (sign) {
-      case "+":
-        ans = a + b;
-        break;
-      case "-":
-        ans = a - b;
-        break;
-      case "x":
-        ans = a * b;
-        break;
-      case "/":
-        ans = a / b;
-        break;
+    if (sign === "+") {
+      ans = a + b;
+    } else if (sign === "-") {
+      ans = a - b;
+    } else if (sign === "x") {
+      ans = a * b;
+    } else if (sign === "/") {
+      ans = a / b;
     }
     return ans;
   };
-  let calc: number = calculate(
-    Number(data.first),
-    Number(data.second),
-    data.sign
-  );
+  let calc: number = calculate(Number(data.first), Number(data.second), data.sign);
   let res: string = calc.toString();
   if (res.length > 10) {
     res = calc.toPrecision(5);
   }
   setData({
     ...data,
-    sign: "",
+    sign: newSign,
     first: res,
     second: "0",
   });
