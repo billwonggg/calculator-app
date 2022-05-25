@@ -301,3 +301,47 @@ describe("Multiple expressions with pressing equal", () => {
     expect(res?.innerHTML).toEqual(calc(((11 + 1) / 4) * 5 - 7));
   });
 });
+
+describe("Multiple expressions without pressing equal", () => {
+  test("Addition", () => {
+    const dom = setup();
+    buttonPress("1", "2", "+", "1", "1", "+", "9", "=");
+    const res = dom.container.querySelector("#screen");
+    expect(res?.innerHTML).toEqual(calc(12 + 11 + 9));
+  });
+
+  test("Subtraction", () => {
+    const dom = setup();
+    buttonPress("1", "2", "-", "1", "1", "-", "9", "=");
+    const res = dom.container.querySelector("#screen");
+    expect(res?.innerHTML).toEqual(calc(12 - 11 - 9));
+  });
+
+  test("Multiplication", () => {
+    const dom = setup();
+    buttonPress("1", "2", "x", "1", "1", "x", "9", "=");
+    const res = dom.container.querySelector("#screen");
+    expect(res?.innerHTML).toEqual(calc(12 * 11 * 9));
+  });
+
+  test("Division", () => {
+    const dom = setup();
+    buttonPress("1", "2", "1", "/", "1", "1", "/", "9", "=");
+    const res = dom.container.querySelector("#screen");
+    expect(res?.innerHTML).toEqual(calc(121 / 11 / 9));
+  });
+
+  test("Addition + multiplication", () => {
+    const dom = setup();
+    buttonPress("1", "2", "1", "x", "1", "1", "+", "9", "=");
+    const res = dom.container.querySelector("#screen");
+    expect(res?.innerHTML).toEqual(calc(121 * 11 + 9));
+  });
+
+  test("Subtraction + division", () => {
+    const dom = setup();
+    buttonPress("1", "2", "1", "/", "1", "0", "-", "9", "=");
+    const res = dom.container.querySelector("#screen");
+    expect(res?.innerHTML).toEqual(calc(121 / 10 - 9));
+  });
+});
