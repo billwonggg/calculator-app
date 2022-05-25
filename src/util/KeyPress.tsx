@@ -128,11 +128,7 @@ export const handleEqual = (
     }
     return ans;
   };
-  let calc: number = calculate(
-    Number(data.first),
-    Number(data.second),
-    data.sign
-  );
+  let calc: number = calculate(Number(data.first), Number(data.second), data.sign);
   let res: string = calc.toString();
   if (res.length > 10) {
     res = calc.toPrecision(5);
