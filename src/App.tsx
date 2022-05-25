@@ -33,31 +33,26 @@ const App = () => {
    * @param val
    * */
   const handleButtonClick = (val: Key): void => {
-    switch (val.type) {
-      case "number":
-        handleNumber(val, data, setData);
-        break;
-      case "reset":
-        handleReset(data, setData);
-        break;
-      case "delete":
-        handleDelete(data, setData);
-        break;
-      case "operation":
+    if (val.type === "number") {
+      handleNumber(val, data, setData);
+    } else if (val.type === "reset") {
+      handleReset(data, setData);
+    } else if (val.type === "delete") {
+      handleDelete(data, setData);
+    } else if (val.type === "operation") {
+      if (data.sign !== "") {
+        handleEqual(val.value, data, setData);
+      } else {
         handleOperation(val, data, setData);
-        break;
-      case "equal":
-        handleEqual(data, setData);
-        break;
-      case "invert":
-        handleInvert(data, setData);
-        break;
+      }
+    } else if (val.type === "equal") {
+      handleEqual("", data, setData);
+    } else if (val.type === "invert") {
+      handleInvert(data, setData);
     }
   };
 
-  // console.log(
-  //   `sign: ${data.sign}\nfirst: ${data.first}\nsecond: ${data.second}\n`
-  // );
+  // console.log(`sign: ${data.sign}\nfirst: ${data.first}\nsecond: ${data.second}\n`);
   return (
     <>
       <div className="App">
