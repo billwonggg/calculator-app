@@ -1,15 +1,7 @@
-interface ButtonProps {
-  className: string;
-  value: string | number;
-  onClick: () => void;
+import { Key } from "../data/KeyPad";
+
+export interface ButtonProps {
+  value: Key;
+  equation: string;
+  setEquation: React.Dispatch<React.SetStateAction<string>>;
 }
-
-const Button = ({ className, value, onClick }: ButtonProps) => {
-  return (
-    <button className={className} onClick={onClick}>
-      {value}
-    </button>
-  );
-};
-
-export default Button;
