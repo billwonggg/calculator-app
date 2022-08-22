@@ -11,6 +11,7 @@ const EqualsButton = ({ display, className }: Key) => {
   const handleClick = () => {
     let res: number | null = null;
     try {
+      // eslint-disable-next-line no-eval
       res = eval(formatEquation(equation));
     } catch (e) {
       return;
