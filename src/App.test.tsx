@@ -1,5 +1,4 @@
-import React from "react";
-import { render, screen, queryByAttribute } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import AppWrapper from "./AppWrapper";
 
@@ -13,8 +12,6 @@ window.matchMedia =
       removeEventListener: function () {},
     };
   };
-
-const getById = queryByAttribute.bind(null, "id");
 
 test("Hello Jest", () => {
   expect("Hello Jest").toContain("Jest");
@@ -346,7 +343,7 @@ describe("Multiple expressions without pressing equal", () => {
   test("Subtraction + division", () => {
     const dom = setup();
     buttonPress("1", "2", "1", "÷", "1", "0", "-", "9", "=");
-    const res = getById(dom.container, "screen");
+    const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(121 / 10 - 9));
   });
 });
@@ -390,7 +387,7 @@ describe("Complex expressions with brackets", () => {
   test("Subtraction + division", () => {
     const dom = setup();
     buttonPress("1", "2", "1", "÷", "(", "1", "0", "-", "9", ")", "=");
-    const res = getById(dom.container, "screen");
+    const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(121 / (10 - 9)));
   });
 });
