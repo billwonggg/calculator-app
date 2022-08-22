@@ -1,24 +1,31 @@
-import { ButtonProps } from "../components/Button";
 import EqualsButton from "../components/EqualsButton";
 import ClearButton from "../components/ClearButton";
-import ValueButton from "../components/ValueButton";
+import NumberButton from "../components/NumberButton";
+import OperationButton from "../components/OperationButton";
+import { Key } from "../data/KeyPad";
 
 class ButtonFactory {
-  getButton({ value, equation, setEquation }: ButtonProps): JSX.Element {
-    if (value.display === "=") return this.getEqualsButton({ value, equation, setEquation });
-    else if (value.display === "AC") return this.getClearButton({ value, equation, setEquation });
-    else return this.getValueButton({ value, equation, setEquation });
+  getButton(data: Key): JSX.Element {
+    if (data.className === "equal") return this.getEqualsButton(data);
+    else if (data.className === "delete") return this.getClearButton(data);
+    else if (data.className === "operation") return this.getOperationButton(data);
+    else if (data.className === "number") return this.getValueButton(data);
+    return <div></div>;
   }
-  getClearButton({ value, equation, setEquation }: ButtonProps): JSX.Element {
-    return <ClearButton value={value} equation={equation} setEquation={setEquation} />;
-  }
-
-  getValueButton({ value, equation, setEquation }: ButtonProps): JSX.Element {
-    return <ValueButton value={value} equation={equation} setEquation={setEquation} />;
+  getClearButton(data: Key): JSX.Element {
+    return <ClearButton {...data} />;
   }
 
-  getEqualsButton({ value, equation, setEquation }: ButtonProps): JSX.Element {
-    return <EqualsButton value={value} equation={equation} setEquation={setEquation} />;
+  getValueButton(data: Key): JSX.Element {
+    return <NumberButton {...data} />;
+  }
+
+  getEqualsButton(data: Key): JSX.Element {
+    return <EqualsButton {...data} />;
+  }
+
+  getOperationButton(data: Key): JSX.Element {
+    return <OperationButton {...data} />;
   }
 }
 
