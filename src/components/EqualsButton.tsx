@@ -1,4 +1,5 @@
 import useCalculator from "../context/useCalculator";
+import { evaluate } from "mathjs";
 import { Key } from "../data/KeyPad";
 
 const EqualsButton = ({ display, className }: Key) => {
@@ -11,8 +12,7 @@ const EqualsButton = ({ display, className }: Key) => {
   const handleClick = () => {
     let res: number | null = null;
     try {
-      // eslint-disable-next-line no-eval
-      res = eval(formatEquation(equation));
+      res = evaluate(formatEquation(equation));
     } catch (e) {
       return;
     }
