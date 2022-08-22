@@ -9,11 +9,18 @@ const EqualsButton = ({ display, className }: Key) => {
   };
 
   const handleClick = () => {
-    const res = eval(formatEquation(equation));
-    let resStr = res.toString();
-    if (resStr.length > 10) resStr = res.toPrecision(8).toString();
-    helpers.setEquation(resStr);
-    helpers.setInitialState(true);
+    let res: number | null = null;
+    try {
+      res = eval(formatEquation(equation));
+    } catch (e) {
+      return;
+    }
+    if (res != null) {
+      let resStr = res.toString();
+      if (resStr.length > 10) resStr = res.toPrecision(8).toString();
+      helpers.setEquation(resStr);
+      helpers.setInitialState(true);
+    }
   };
 
   return (
