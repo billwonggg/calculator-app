@@ -13,19 +13,19 @@ class ButtonFactory {
     return <div></div>;
   }
   getClearButton(data: Key): JSX.Element {
-    return <ClearButton {...data} />;
+    return <ClearButton key={data.display} {...data} />;
   }
 
   getValueButton(data: Key): JSX.Element {
-    return <NumberButton {...data} />;
+    return <NumberButton key={data.display} {...data} />;
   }
 
   getEqualsButton(data: Key): JSX.Element {
-    return <EqualsButton {...data} />;
+    return <EqualsButton key={data.display} {...data} />;
   }
 
   getOperationButton(data: Key): JSX.Element {
-    return <OperationButton {...data} />;
+    return <OperationButton key={data.display} {...data} />;
   }
 }
 

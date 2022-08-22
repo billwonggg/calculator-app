@@ -13,7 +13,9 @@ const useCalculator = () => {
   }
 
   function addToEquation(val: string) {
-    setState((state) => ({ ...state, equation: state.equation + val }));
+    const eq = state.equation;
+    if (eq !== "0") val = eq + val;
+    setState((state) => ({ ...state, equation: val }));
   }
 
   function setEquation(val: string) {
@@ -21,12 +23,12 @@ const useCalculator = () => {
   }
 
   function clearEquation() {
-    setState((state) => ({ ...state, equation: "" }));
+    setState((state) => ({ ...state, equation: "0" }));
   }
 
   function popBackEquation() {
     const eq = state.equation;
-    const newEq = eq.length > 0 ? eq.substring(0, eq.length - 1) : "";
+    const newEq = eq.length > 1 ? eq.substring(0, eq.length - 1) : "0";
     setState((state) => ({ ...state, equation: newEq }));
   }
 

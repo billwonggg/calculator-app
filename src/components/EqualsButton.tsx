@@ -24,7 +24,7 @@ const EqualsButton = ({ display, className }: Key) => {
   };
 
   return (
-    <button key={display} className={className} onClick={handleClick}>
+    <button className={className} onClick={handleClick}>
       {display}
     </button>
   );

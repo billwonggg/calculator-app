@@ -10,7 +10,7 @@ const ClearButton = ({ display, className }: Key) => {
   };
 
   return (
-    <button key={display} className={className} onClick={handleClick}>
+    <button className={className} onClick={handleClick}>
       {initial ? "AC" : "CE"}
     </button>
   );
