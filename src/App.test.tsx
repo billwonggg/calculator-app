@@ -1,7 +1,7 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, queryByAttribute } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import App from "./App";
+import AppWrapper from "./AppWrapper";
 
 // Jest DOM doesn't support window match media
 window.matchMedia =
@@ -14,19 +14,21 @@ window.matchMedia =
     };
   };
 
+const getById = queryByAttribute.bind(null, "id");
+
 test("Hello Jest", () => {
   expect("Hello Jest").toContain("Jest");
 });
 
 test("Renders calculator text", () => {
-  const { getByText } = render(<App />);
+  const { getByText } = render(<AppWrapper />);
   const textElement = getByText(/calculator/i);
   expect(textElement).toBeTruthy();
 });
 
 describe("Check button text", () => {
   beforeEach(() => {
-    render(<App />);
+    render(<AppWrapper />);
   });
 
   test("Numbers 0-9", () => {
@@ -37,14 +39,15 @@ describe("Check button text", () => {
   });
 
   test("Operation buttons", () => {
-    const operations: string[] = ["+", "-", "x", "/", "+-"];
+    const operations: string[] = ["+", "-", "×", "÷"];
     operations.forEach((element: string) => {
       const res = screen.getByText(element, { selector: "button" });
       expect(res).toBeTruthy();
     });
   });
+
   test("Other buttons", () => {
-    const other: string[] = ["=", "AC", "DEL", "."];
+    const other: string[] = ["=", "AC", "(", ".", ")"];
     other.forEach((element: string) => {
       const res = screen.getByText(element, { selector: "button" });
       expect(res).toBeTruthy();
@@ -53,7 +56,7 @@ describe("Check button text", () => {
 });
 
 const setup = () => {
-  const dom = render(<App />);
+  const dom = render(<AppWrapper />);
   buttonPress("AC");
   return dom;
 };
@@ -73,17 +76,17 @@ const buttonPress = (...args: string[]): void => {
 const calc = (num: number): string => {
   let ans = num.toString();
   if (ans.length > 10) {
-    ans = num.toPrecision(5);
+    ans = num.toPrecision(8);
   }
   return ans;
 };
 
-describe("Clear and Delete button", () => {
+describe("Clear button", () => {
   test("Clear all", () => {
     const dom = setup();
     const res = dom.container.querySelector("#screen");
-    buttonPress("5", "9", "9", "+-");
-    expect(res?.innerHTML).toEqual("-599");
+    buttonPress("5", "9", "8", "+", "3", "=");
+    expect(res?.innerHTML).toEqual("601");
     buttonPress("AC");
     expect(res?.innerHTML).toEqual("0");
   });
@@ -93,45 +96,47 @@ describe("Clear and Delete button", () => {
     const res = dom.container.querySelector("#screen");
     buttonPress("5", "9", "9");
     expect(res?.innerHTML).toEqual("599");
-    buttonPress("DEL");
+    buttonPress("CE");
     expect(res?.innerHTML).toEqual("59");
-    buttonPress("DEL");
+    buttonPress("CE");
     expect(res?.innerHTML).toEqual("5");
-    buttonPress("DEL");
+    buttonPress("CE");
     expect(res?.innerHTML).toEqual("0");
   });
 
   test("Delete numbers negative", () => {
     const dom = setup();
     const res = dom.container.querySelector("#screen");
-    buttonPress("5", "9", "9", "+-");
+    buttonPress("-", "5", "9", "9");
     expect(res?.innerHTML).toEqual("-599");
-    buttonPress("DEL");
+    buttonPress("CE");
     expect(res?.innerHTML).toEqual("-59");
-    buttonPress("DEL");
+    buttonPress("CE");
     expect(res?.innerHTML).toEqual("-5");
-    buttonPress("DEL");
+    buttonPress("CE");
+    expect(res?.innerHTML).toEqual("-");
+    buttonPress("CE");
     expect(res?.innerHTML).toEqual("0");
   });
 
   test("Delete first number during expression", () => {
     const dom = setup();
     const res = dom.container.querySelector("#screen");
-    buttonPress("5", "0", "DEL", "+", "4", "0", "=");
+    buttonPress("5", "0", "CE", "+", "4", "0", "=");
     expect(res?.innerHTML).toEqual(calc(5 + 40));
   });
 
   test("Delete second number during expression", () => {
     const dom = setup();
     const res = dom.container.querySelector("#screen");
-    buttonPress("5", "0", "+", "4", "0", "DEL", "=");
+    buttonPress("5", "0", "+", "4", "0", "CE", "=");
     expect(res?.innerHTML).toEqual(calc(50 + 4));
   });
 
   test("Delete both numbers during expression", () => {
     const dom = setup();
     const res = dom.container.querySelector("#screen");
-    buttonPress("5", "0", "DEL", "+", "4", "0", "DEL", "=");
+    buttonPress("5", "0", "CE", "+", "4", "0", "CE", "=");
     expect(res?.innerHTML).toEqual(calc(5 + 4));
   });
 });
@@ -153,7 +158,7 @@ describe("One expression tests", () => {
 
   test("Basic addition negative", () => {
     const dom = setup();
-    buttonPress("1", "0", "0", "+-", "+", "5", "0", "=");
+    buttonPress("-", "1", "0", "0", "+", "5", "0", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(-100 + 50));
   });
@@ -174,7 +179,7 @@ describe("One expression tests", () => {
 
   test("Basic subtraction negative", () => {
     const dom = setup();
-    buttonPress("1", "0", "0", "+-", "-", "2", "0", "0", "=");
+    buttonPress("-", "1", "0", "0", "-", "2", "0", "0", "=");
     dom.container.querySelector("#screen");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(-100 - 200));
@@ -182,70 +187,70 @@ describe("One expression tests", () => {
 
   test("Basic subtraction double negative", () => {
     const dom = setup();
-    buttonPress("1", "0", "0", "+-", "-", "2", "0", "0", "+-", "=");
+    buttonPress("-", "1", "0", "0", "-", "(", "-", "2", "0", "0", ")", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(-100 - -200));
   });
 
   test("Basic multiplication small", () => {
     const dom = setup();
-    buttonPress("3", "x", "1", "2", "=");
+    buttonPress("3", "×", "1", "2", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(3 * 12));
   });
 
   test("Basic multiplication large", () => {
     const dom = setup();
-    buttonPress("4", "5", "8", "7", "9", "x", "2", "6", "5", "4", "3", "=");
+    buttonPress("4", "5", "8", "7", "9", "×", "2", "6", "5", "4", "3", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(45879 * 26543));
   });
 
   test("Basic multiplication negative", () => {
     const dom = setup();
-    buttonPress("1", "1", "+-", "x", "1", "1", "=");
+    buttonPress("-", "1", "1", "×", "1", "1", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(-11 * 11));
   });
 
   test("Basic multiplication double negative", () => {
     const dom = setup();
-    buttonPress("1", "1", "+-", "x", "1", "1", "+-", "=");
+    buttonPress("-", "1", "1", "×", "-", "1", "1", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(-11 * -11));
   });
 
   test("Basic division small", () => {
     const dom = setup();
-    buttonPress("5", "2", "/", "6", "=");
+    buttonPress("5", "2", "÷", "6", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(52 / 6));
   });
 
   test("Basic division large", () => {
     const dom = setup();
-    buttonPress("4", "5", "8", "7", "9", "/", "2", "6", "5", "4", "3", "=");
+    buttonPress("4", "5", "8", "7", "9", "÷", "2", "6", "5", "4", "3", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(45879 / 26543));
   });
 
   test("Basic division negative", () => {
     const dom = setup();
-    buttonPress("1", "2", "1", "+-", "/", "1", "1", "=");
+    buttonPress("-", "1", "2", "1", "÷", "1", "1", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(-121 / 11));
   });
 
   test("Basic division double negative", () => {
     const dom = setup();
-    buttonPress("1", "2", "1", "+-", "/", "1", "1", "+-", "=");
+    buttonPress("-", "1", "2", "1", "÷", "-", "1", "1", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(-121 / -11));
   });
 
   test("Division by zero", () => {
     const dom = setup();
-    buttonPress("1", "2", "1", "/", "0", "=");
+    buttonPress("1", "2", "1", "÷", "0", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(121 / 0));
   });
@@ -268,35 +273,35 @@ describe("Multiple expressions with pressing equal", () => {
 
   test("Multiplication", () => {
     const dom = setup();
-    buttonPress("1", "2", "x", "1", "1", "=", "x", "9", "=");
+    buttonPress("1", "2", "×", "1", "1", "=", "×", "9", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(12 * 11 * 9));
   });
 
   test("Division", () => {
     const dom = setup();
-    buttonPress("1", "2", "1", "/", "1", "1", "=", "/", "9", "=");
+    buttonPress("1", "2", "1", "÷", "1", "1", "=", "÷", "9", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(121 / 11 / 9));
   });
 
   test("Addition + multiplication", () => {
     const dom = setup();
-    buttonPress("1", "2", "1", "+", "1", "1", "=", "x", "9", "=");
+    buttonPress("1", "2", "1", "+", "1", "1", "=", "×", "9", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc((121 + 11) * 9));
   });
 
   test("Subtraction + division", () => {
     const dom = setup();
-    buttonPress("1", "2", "1", "-", "1", "1", "=", "/", "9", "=");
+    buttonPress("1", "2", "1", "-", "1", "1", "=", "÷", "9", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc((121 - 11) / 9));
   });
 
   test("Mix all", () => {
     const dom = setup();
-    buttonPress("1", "1", "+", "1", "=", "/", "4", "=", "x", "5", "=", "-", "7", "=");
+    buttonPress("1", "1", "+", "1", "=", "÷", "4", "=", "×", "5", "=", "-", "7", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(((11 + 1) / 4) * 5 - 7));
   });
@@ -319,29 +324,73 @@ describe("Multiple expressions without pressing equal", () => {
 
   test("Multiplication", () => {
     const dom = setup();
-    buttonPress("1", "2", "x", "1", "1", "x", "9", "=");
+    buttonPress("1", "2", "×", "1", "1", "×", "9", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(12 * 11 * 9));
   });
 
   test("Division", () => {
     const dom = setup();
-    buttonPress("1", "2", "1", "/", "1", "1", "/", "9", "=");
+    buttonPress("1", "2", "1", "÷", "1", "1", "÷", "9", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(121 / 11 / 9));
   });
 
   test("Addition + multiplication", () => {
     const dom = setup();
-    buttonPress("1", "2", "1", "x", "1", "1", "+", "9", "=");
+    buttonPress("1", "2", "1", "×", "1", "1", "+", "9", "=");
     const res = dom.container.querySelector("#screen");
     expect(res?.innerHTML).toEqual(calc(121 * 11 + 9));
   });
 
   test("Subtraction + division", () => {
     const dom = setup();
-    buttonPress("1", "2", "1", "/", "1", "0", "-", "9", "=");
-    const res = dom.container.querySelector("#screen");
+    buttonPress("1", "2", "1", "÷", "1", "0", "-", "9", "=");
+    const res = getById(dom.container, "screen");
     expect(res?.innerHTML).toEqual(calc(121 / 10 - 9));
+  });
+});
+
+describe("Complex expressions with brackets", () => {
+  test("Addition", () => {
+    const dom = setup();
+    buttonPress("1", "2", "+", "(", "1", "1", "+", "9", ")", "=");
+    const res = dom.container.querySelector("#screen");
+    expect(res?.innerHTML).toEqual(calc(12 + (11 + 9)));
+  });
+
+  test("Subtraction", () => {
+    const dom = setup();
+    buttonPress("1", "2", "-", "(", "1", "1", "-", "9", ")", "=");
+    const res = dom.container.querySelector("#screen");
+    expect(res?.innerHTML).toEqual(calc(12 - (11 - 9)));
+  });
+
+  test("Multiplication", () => {
+    const dom = setup();
+    buttonPress("1", "2", "×", "(", "1", "1", "×", "9", ")", "=");
+    const res = dom.container.querySelector("#screen");
+    expect(res?.innerHTML).toEqual(calc(12 * (11 * 9)));
+  });
+
+  test("Division", () => {
+    const dom = setup();
+    buttonPress("1", "2", "1", "÷", "(", "1", "1", "÷", "9", ")", "=");
+    const res = dom.container.querySelector("#screen");
+    expect(res?.innerHTML).toEqual(calc(121 / (11 / 9)));
+  });
+
+  test("Addition + multiplication", () => {
+    const dom = setup();
+    buttonPress("1", "2", "1", "×", "(", "1", "1", "+", "9", ")", "=");
+    const res = dom.container.querySelector("#screen");
+    expect(res?.innerHTML).toEqual(calc(121 * (11 + 9)));
+  });
+
+  test("Subtraction + division", () => {
+    const dom = setup();
+    buttonPress("1", "2", "1", "÷", "(", "1", "0", "-", "9", ")", "=");
+    const res = getById(dom.container, "screen");
+    expect(res?.innerHTML).toEqual(calc(121 / (10 - 9)));
   });
 });

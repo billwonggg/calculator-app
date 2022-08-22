@@ -8,7 +8,7 @@ export interface StateInterface {
 
 type ContextInterface = [StateInterface, React.Dispatch<React.SetStateAction<StateInterface>>];
 
-const defaultState: StateInterface = { equation: "", history: [], initialState: true };
+const defaultState: StateInterface = { equation: "0", history: [], initialState: true };
 
 const CalculatorContext = createContext<ContextInterface>([defaultState, () => {}]);
 
