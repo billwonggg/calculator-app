@@ -1,32 +1,22 @@
-import { useState } from "react";
-import Calculator from "./components/Calculator";
 import Screen from "./components/Screen";
 import ButtonBox from "./components/ButtonBox";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { KeyPad, Key } from "./data/KeyPad";
 import ButtonFactory from "./util/ButtonFactory";
-import { ButtonProps } from "./components/Button";
+import useCalculator from "./context/useCalculator";
 
 const App = () => {
-  const [equation, setEquation] = useState<string>("");
+  const state = useCalculator().getState();
   const factory = new ButtonFactory();
+
   return (
     <div className="App">
-      <Calculator>
+      <div className="calculator">
         <Header />
-        <Screen value={equation} />
-        <ButtonBox>
-          {KeyPad.flat().map((val: Key) => {
-            const props: ButtonProps = {
-              value: val,
-              equation: equation,
-              setEquation: setEquation,
-            };
-            return factory.getButton(props);
-          })}
-        </ButtonBox>
-      </Calculator>
+        <Screen value={state.equation} />
+        <ButtonBox>{KeyPad.flat().map((val: Key) => factory.getButton(val))}</ButtonBox>
+      </div>
       <Footer />
     </div>
   );
