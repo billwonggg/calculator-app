@@ -64,10 +64,11 @@ const setup = () => {
  * @returns None
  */
 const buttonPress = (...args: string[]): void => {
-  args.forEach((expression) => {
+  for (const expression of args) {
     const button = screen.getByText(expression, { selector: "button" });
+    expect(button).toBeTruthy();
     userEvent.click(button);
-  });
+  }
 };
 
 const calc = (num: number): string => {
