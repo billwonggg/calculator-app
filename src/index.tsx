@@ -1,11 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import AppWrapper from "./AppWrapper";
+import App from "./App";
+import { CalculatorProvider } from "./context/CalculatorContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>
-    <AppWrapper />
+    <CalculatorProvider>
+      <App />
+    </CalculatorProvider>
   </React.StrictMode>
 );

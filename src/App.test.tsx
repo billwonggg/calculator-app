@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import AppWrapper from "./AppWrapper";
+import App from "./App";
+import { CalculatorProvider } from "./context/CalculatorContext";
 
 // Jest DOM doesn't support window match media
 window.matchMedia =
@@ -18,14 +19,22 @@ test("Hello Jest", () => {
 });
 
 test("Renders calculator text", () => {
-  const { getByText } = render(<AppWrapper />);
+  const { getByText } = render(
+    <CalculatorProvider>
+      <App />
+    </CalculatorProvider>
+  );
   const textElement = getByText(/calculator/i);
   expect(textElement).toBeTruthy();
 });
 
 describe("Check button text", () => {
   beforeEach(() => {
-    render(<AppWrapper />);
+    render(
+      <CalculatorProvider>
+        <App />
+      </CalculatorProvider>
+    );
   });
 
   test("Numbers 0-9", () => {
@@ -53,7 +62,11 @@ describe("Check button text", () => {
 });
 
 const setup = () => {
-  const dom = render(<AppWrapper />);
+  const dom = render(
+    <CalculatorProvider>
+      <App />
+    </CalculatorProvider>
+  );
   buttonPress("AC");
   return dom;
 };
@@ -64,9 +77,9 @@ const setup = () => {
  * @returns None
  */
 const buttonPress = (...args: string[]): void => {
-  for (const expression of args) {
-    const button = screen.getByText(expression, { selector: "button" });
-    expect(button).toBeTruthy();
+  for (let i = 0; i < args.length; i++) {
+    const button = screen.getByText(args[i], { selector: "button" });
+    expect(button).toBeDefined();
     userEvent.click(button);
   }
 };
@@ -385,7 +398,7 @@ describe("Complex expressions with brackets", () => {
     expect(res?.innerHTML).toEqual(calc(121 * (11 + 9)));
   });
 
-  test("Subtraction + division", () => {
+  test("Subtraction + division2", () => {
     const dom = setup();
     buttonPress("1", "2", "1", "÷", "(", "1", "0", "-", "9", ")", "=");
     const res = dom.container.querySelector("#screen");
