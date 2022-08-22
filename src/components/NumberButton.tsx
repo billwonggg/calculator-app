@@ -1,19 +1,20 @@
 import useCalculator from "../context/useCalculator";
 import { Key } from "../data/KeyPad";
 
-const ClearButton = ({ display, className }: Key) => {
+const NumberButton = ({ display, className }: Key) => {
   const helpers = useCalculator();
   const initial = helpers.getState().initialState;
   const handleClick = () => {
     if (initial) helpers.clearEquation();
-    else helpers.popBackEquation();
+    helpers.addToEquation(display);
+    helpers.setInitialState(false);
   };
 
   return (
     <button key={display} className={className} onClick={handleClick}>
-      {initial ? "AC" : "CE"}
+      {display}
     </button>
   );
 };
 
-export default ClearButton;
+export default NumberButton;
