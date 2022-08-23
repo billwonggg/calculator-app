@@ -28,15 +28,28 @@
   height: 100px;
   width: 100%;
   margin-bottom: 15px;
-  padding: 0px 20px;
-  font-size: 48px;
+  padding: 0px 15px;
+
   background-color: var(--color-screen);
   border-radius: 15px;
+  color: var(--color-value);
+  box-sizing: border-box;
+}
+
+#screen-top {
+  height: 40px;
+  font-size: 25px;
+  display: flex;
+  align-items: flex-end;
+  color: var(--color-value);
+}
+
+#screen-bottom {
+  height: 60px;
+  font-size: 48px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  color: var(--color-value);
-  box-sizing: border-box;
 }
 
 .buttonbox {
