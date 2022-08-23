@@ -52,6 +52,25 @@
   justify-content: flex-end;
 }
 
+#history-item-button {
+  color: var(--color-value);
+  background-color: var(--color-screen);
+  text-align: center;
+}
+
+#history-dropdown {
+  z-index: 10;
+  width: 280px;
+  min-height: 150px;
+  max-height: 50vh;
+  padding: 5px 15px;
+  border-radius: 20px;
+  position: absolute;
+  background-color: #4682b4;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 .buttonbox {
   width: 100%;
   height: calc(100% - 165px);
