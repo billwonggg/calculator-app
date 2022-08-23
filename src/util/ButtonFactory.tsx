@@ -3,29 +3,35 @@ import ClearButton from "../components/ClearButton";
 import NumberButton from "../components/NumberButton";
 import OperationButton from "../components/OperationButton";
 import { Key } from "../data/KeyPad";
+import { StateInterface } from "../App";
 
+export interface ButtonProps {
+  state: StateInterface;
+  setState: React.Dispatch<React.SetStateAction<StateInterface>>;
+  data: Key;
+}
 class ButtonFactory {
-  getButton(data: Key): JSX.Element {
-    if (data.className === "equal") return this.getEqualsButton(data);
-    else if (data.className === "delete") return this.getClearButton(data);
-    else if (data.className === "operation") return this.getOperationButton(data);
-    else if (data.className === "number") return this.getValueButton(data);
+  getButton(props: ButtonProps): JSX.Element {
+    if (props.data.className === "equal") return this.getEqualsButton(props);
+    else if (props.data.className === "delete") return this.getClearButton(props);
+    else if (props.data.className === "operation") return this.getOperationButton(props);
+    else if (props.data.className === "number") return this.getNumberButton(props);
     return <div></div>;
   }
-  getClearButton(data: Key): JSX.Element {
-    return <ClearButton key={data.display} {...data} />;
+  getClearButton(props: ButtonProps): JSX.Element {
+    return <ClearButton key={props.data.display} {...props} />;
   }
 
-  getValueButton(data: Key): JSX.Element {
-    return <NumberButton key={data.display} {...data} />;
+  getNumberButton(props: ButtonProps): JSX.Element {
+    return <NumberButton key={props.data.display} {...props} />;
   }
 
-  getEqualsButton(data: Key): JSX.Element {
-    return <EqualsButton key={data.display} {...data} />;
+  getEqualsButton(props: ButtonProps): JSX.Element {
+    return <EqualsButton key={props.data.display} {...props} />;
   }
 
-  getOperationButton(data: Key): JSX.Element {
-    return <OperationButton key={data.display} {...data} />;
+  getOperationButton(props: ButtonProps): JSX.Element {
+    return <OperationButton key={props.data.display} {...props} />;
   }
 }
 

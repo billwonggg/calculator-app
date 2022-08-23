@@ -1,17 +1,15 @@
-import useCalculator from "../context/useCalculator";
-import { Key } from "../data/KeyPad";
+import { ButtonProps } from "../util/ButtonFactory";
+import { clearEquation, popBackEquation } from "../util/CalculatorHelpers";
 
-const ClearButton = ({ display, className }: Key) => {
-  const helpers = useCalculator();
-  const initial = helpers.getState().initialState;
+const ClearButton = ({ state, setState, data }: ButtonProps) => {
   const handleClick = () => {
-    if (initial) helpers.clearEquation();
-    else helpers.popBackEquation();
+    if (state.initialState) clearEquation(setState);
+    else popBackEquation(setState);
   };
 
   return (
-    <button className={className} onClick={handleClick}>
-      {initial ? "AC" : "CE"}
+    <button className={data.className} onClick={handleClick}>
+      {state.initialState ? "AC" : "CE"}
     </button>
   );
 };

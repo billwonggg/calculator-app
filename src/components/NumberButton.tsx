@@ -1,18 +1,19 @@
-import useCalculator from "../context/useCalculator";
-import { Key } from "../data/KeyPad";
+import { ButtonProps } from "../util/ButtonFactory";
+import { setInitialState, clearEquation, addToEquation } from "../util/CalculatorHelpers";
 
-const NumberButton = ({ display, className }: Key) => {
-  const helpers = useCalculator();
-  const initial = helpers.getState().initialState;
+const NumberButton = ({ state, setState, data }: ButtonProps) => {
+  const initial = state.initialState;
   const handleClick = () => {
-    if (initial) helpers.clearEquation();
-    helpers.addToEquation(display);
-    helpers.setInitialState(false);
+    if (initial) {
+      clearEquation(setState);
+      setInitialState(setState, false);
+    }
+    addToEquation(setState, data.display);
   };
 
   return (
-    <button className={className} onClick={handleClick}>
-      {display}
+    <button className={data.className} onClick={handleClick}>
+      {data.display}
     </button>
   );
 };
