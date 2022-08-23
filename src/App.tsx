@@ -21,7 +21,7 @@ const App = () => {
     <div className="App">
       <div className="calculator">
         <Header />
-        <Screen value={state.equation} />
+        <Screen value={state.equation} history={state.history} setState={setState} />
         <ButtonBox>
           {KeyPad.flat().map((val: Key) => {
             const props: ButtonProps = {
