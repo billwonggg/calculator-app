@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
-import { CalculatorProvider } from "./context/CalculatorContext";
 
 // Jest DOM doesn't support window match media
 window.matchMedia =
@@ -19,22 +18,14 @@ test("Hello Jest", () => {
 });
 
 test("Renders calculator text", () => {
-  const { getByText } = render(
-    <CalculatorProvider>
-      <App />
-    </CalculatorProvider>
-  );
+  const { getByText } = render(<App />);
   const textElement = getByText(/calculator/i);
   expect(textElement).toBeTruthy();
 });
 
 describe("Check button text", () => {
   beforeEach(() => {
-    render(
-      <CalculatorProvider>
-        <App />
-      </CalculatorProvider>
-    );
+    render(<App />);
   });
 
   test("Numbers 0-9", () => {
@@ -62,11 +53,7 @@ describe("Check button text", () => {
 });
 
 const setup = () => {
-  const dom = render(
-    <CalculatorProvider>
-      <App />
-    </CalculatorProvider>
-  );
+  const dom = render(<App />);
   buttonPress("AC");
   return dom;
 };
