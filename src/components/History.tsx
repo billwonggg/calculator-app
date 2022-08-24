@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { StateInterface } from "../App";
 import HistoryIcon from "../icons/HistoryIcon";
-import { setEquation } from "../util/CalculatorHelpers";
+import { setEquation, setInitialState } from "../util/CalculatorHelpers";
 
 interface HistoryProps {
   histArr: string[];
@@ -41,6 +41,7 @@ interface HistoryDropdownProps extends HistoryProps {
 const HistoryDropdown = ({ histArr, setState, setOpen }: HistoryDropdownProps) => {
   const handleClick = (e: React.MouseEvent) => {
     setEquation(setState, (e.target as HTMLInputElement).value);
+    setInitialState(setState, false);
     setOpen(false);
   };
 
