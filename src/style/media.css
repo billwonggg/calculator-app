@@ -13,4 +13,8 @@
   .buttonbox {
     grid-gap: 20px !important;
   }
+
+  .dropdown-items {
+    width: 350px !important;
+  }
 }

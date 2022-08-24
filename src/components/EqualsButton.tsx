@@ -1,5 +1,5 @@
 import { ButtonProps } from "../util/ButtonFactory";
-import { setEquation, setInitialState } from "../util/CalculatorHelpers";
+import { addToHistory, setEquation, setInitialState } from "../util/CalculatorHelpers";
 import { evaluate } from "mathjs";
 
 const EqualsButton = ({ state, setState, data }: ButtonProps) => {
@@ -16,13 +16,14 @@ const EqualsButton = ({ state, setState, data }: ButtonProps) => {
     if (res != null) {
       let resStr = res.toString();
       if (resStr.length > 10) resStr = res.toPrecision(8).toString();
+      addToHistory(state, state.equation);
       setInitialState(setState, true);
       setEquation(setState, resStr);
     }
   };
 
   return (
-    <button className={data.className} onClick={handleClick}>
+    <button className={data.className + " calc-button"} onClick={handleClick}>
       {data.display}
     </button>
   );
