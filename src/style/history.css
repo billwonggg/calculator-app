@@ -1,4 +1,6 @@
 .history-item {
+  height: 45px;
+  font-size: 25px;
   color: var(--color-font-button-number);
   background-color: var(--color-button-number);
   margin: 10px 0px;
@@ -11,7 +13,7 @@
 
 .dropdown-items {
   z-index: 10;
-  width: 280px;
+  width: 240px;
   min-height: 150px;
   max-height: 50vh;
   padding: 5px 15px;
@@ -20,6 +22,7 @@
   background-color: var(--color-history);
   overflow-x: hidden;
   overflow-y: scroll;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .dropdown.active .dropdown-items {
