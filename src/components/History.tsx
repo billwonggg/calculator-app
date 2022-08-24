@@ -25,7 +25,7 @@ const History = ({ histArr, setState }: HistoryProps) => {
   });
 
   return (
-    <div ref={dropdown}>
+    <div ref={dropdown} className={open ? "dropdown active" : "dropdown"}>
       <HistoryIcon style={{ cursor: "pointer" }} onClick={() => setOpen(!open)} />
       {open && <HistoryDropdown histArr={histArr} setState={setState} setOpen={setOpen} />}
     </div>
@@ -37,23 +37,19 @@ interface HistoryDropdownProps extends HistoryProps {
 }
 
 const HistoryDropdown = ({ histArr, setState, setOpen }: HistoryDropdownProps) => {
+  const handleClick = (e: React.MouseEvent) => {
+    setEquation(setState, (e.target as HTMLInputElement).value);
+    setOpen(false);
+  };
+
   return (
-    <div id="history-dropdown">
+    <div className="dropdown-items">
       {histArr.length === 0 ? (
         <h4>Your calculations will appear here so you could reuse them.</h4>
       ) : (
         histArr.map((item, i) => {
           return (
-            <button
-              id="history-item-button"
-              key={i}
-              value={item}
-              style={{ margin: "10px 0px" }}
-              onClick={(e) => {
-                setEquation(setState, (e.target as HTMLInputElement).value);
-                setOpen(false);
-              }}
-            >
+            <button className="history-item calc-button" key={i} value={item} onClick={handleClick}>
               {item}
             </button>
           );
