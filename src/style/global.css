@@ -52,13 +52,13 @@
   --color-shadow-button-number: rgb(32, 31, 30);
   --color-font-button-number: #fff;
 
-  --color-button-del: rgb(42, 26, 30);
-  --color-button-del-hover: rgb(58, 30, 37);
-  --color-shadow-button-del: rgb(36, 21, 24);
-  --color-font-button-del: rgb(212, 78, 79);
+  --color-button-del: #d33640;
+  --color-button-del-hover: #f9414d;
+  --color-shadow-button-del: #ab242d;
+  --color-font-button-del: #fff;
 
   --color-button-operation: rgb(241, 154, 55);
-  --color-button-operation-hover: rgb(252, 208, 63);
+  --color-button-operation-hover: rgb(255, 184, 78);
   --color-shadow-button-operation: rgb(133, 82, 24);
   --color-font-button-operation: #ffffff;
 
