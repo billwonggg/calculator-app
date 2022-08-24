@@ -8,7 +8,7 @@ const OperationButton = ({ state, setState, data }: ButtonProps) => {
   };
 
   return (
-    <button className={data.className} onClick={handleClick}>
+    <button className={data.className + " calc-button"} onClick={handleClick}>
       {data.display}
     </button>
   );
