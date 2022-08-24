@@ -9,6 +9,7 @@
 > - Unit tests with Jest and React Testing Library for coverage to ensure webpage behaviour is correct.
 > - Integrating a CI/CD pipeline with GitHub Actions for an automated workflow of building to testing to deployment.
 > - CSS global variables and document attributes to define themes.
+> - Animations with CSS and JavaScript
 > - Responsive frontend design for different devices.
 
 ### Update - August 2022
