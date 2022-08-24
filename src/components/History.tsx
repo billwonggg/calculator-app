@@ -47,7 +47,9 @@ const HistoryDropdown = ({ histArr, setState, setOpen }: HistoryDropdownProps) =
   return (
     <div className="dropdown-items">
       {histArr.length === 0 ? (
-        <h4>Your calculations will appear here so you could reuse them.</h4>
+        <h4 style={{ textAlign: "center" }}>
+          Your calculations appear here so that you can reuse them.
+        </h4>
       ) : (
         histArr.map((item, i) => {
           return (
