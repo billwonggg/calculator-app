@@ -23,7 +23,7 @@ After completing the course "The Art of Software Design" at uni, I was able to a
 ### Mobile Preview:
 
 <div style="width: 650px; display: flex; justify-content: space-between; flex-wrap: wrap;"> 
-    <img src="./images/mobile-1.png" width="200px">
+    <img src="./images/mob-3.png" width="200px">
     <img src="./images/mobile-2.png" width="200px">
-    <img src="./images/mobile-3.png" width="200px">
+    <img src="./images/mob-1.png" width="200px">
 </div>
