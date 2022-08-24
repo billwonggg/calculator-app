@@ -25,9 +25,9 @@ const History = ({ histArr, setState }: HistoryProps) => {
   });
 
   return (
-    <div ref={dropdown} className={open ? "dropdown active" : "dropdown"}>
+    <div ref={dropdown} className={open ? "dropdown active" : "dropdown closed"}>
       <HistoryIcon style={{ cursor: "pointer" }} onClick={() => setOpen(!open)} />
-      {open && <HistoryDropdown histArr={histArr} setState={setState} setOpen={setOpen} />}
+      <HistoryDropdown histArr={histArr} setState={setState} setOpen={setOpen} />
     </div>
   );
 };
