@@ -37,13 +37,20 @@ interface HistoryDropdownProps extends HistoryProps {
 }
 
 const HistoryDropdown = ({ histArr, setState, setOpen }: HistoryDropdownProps) => {
+  const itemsRef = useRef<HTMLDivElement>(null);
+
+  // scroll to bottom of the history dropdown
+  useEffect(() => {
+    itemsRef.current?.scrollTo(0, itemsRef.current.scrollHeight);
+  });
+
   const handleClick = (e: React.MouseEvent) => {
     setEquation(setState, (e.target as HTMLInputElement).value);
     setOpen(false);
   };
 
   return (
-    <div className="dropdown-items">
+    <div ref={itemsRef} className="dropdown-items">
       {histArr.length === 0 ? (
         <h4>Your calculations will appear here so you could reuse them.</h4>
       ) : (
