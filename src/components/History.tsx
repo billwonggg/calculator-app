@@ -24,10 +24,12 @@ const History = ({ histArr, setState }: HistoryProps) => {
     };
   });
 
+  const histCopy = [...histArr];
+  const histReversed = histCopy.reverse();
   return (
-    <div ref={dropdown} className={open ? "dropdown active" : "dropdown"}>
+    <div ref={dropdown} id="dropdown" className={open ? "dropdown active" : "dropdown closed"}>
       <HistoryIcon style={{ cursor: "pointer" }} onClick={() => setOpen(!open)} />
-      {open && <HistoryDropdown histArr={histArr} setState={setState} setOpen={setOpen} />}
+      <HistoryDropdown histArr={histReversed} setState={setState} setOpen={setOpen} />
     </div>
   );
 };
@@ -37,20 +39,13 @@ interface HistoryDropdownProps extends HistoryProps {
 }
 
 const HistoryDropdown = ({ histArr, setState, setOpen }: HistoryDropdownProps) => {
-  const itemsRef = useRef<HTMLDivElement>(null);
-
-  // scroll to bottom of the history dropdown
-  useEffect(() => {
-    itemsRef.current?.scrollTo(0, itemsRef.current.scrollHeight);
-  });
-
   const handleClick = (e: React.MouseEvent) => {
     setEquation(setState, (e.target as HTMLInputElement).value);
     setOpen(false);
   };
 
   return (
-    <div ref={itemsRef} className="dropdown-items">
+    <div className="dropdown-items">
       {histArr.length === 0 ? (
         <h4>Your calculations will appear here so you could reuse them.</h4>
       ) : (

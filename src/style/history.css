@@ -3,35 +3,68 @@
   font-size: 25px;
   color: var(--color-font-button-number);
   background-color: var(--color-button-number);
-  margin: 10px 0px;
+  margin: 15px 0px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .history-item:hover {
   background-color: var(--color-button-number-hover);
 }
 
-.dropdown-items {
-  z-index: 10;
-  width: 240px;
-  min-height: 150px;
-  max-height: 50vh;
-  padding: 5px 15px;
-  border-radius: 20px;
+.dropdown {
   position: absolute;
+  padding: 0;
+}
+
+.dropdown-items {
+  width: 240px;
+  position: absolute;
+  z-index: 10;
+  padding: 0px 15px;
+
+  border-radius: 20px;
   background-color: var(--color-history);
-  overflow-x: hidden;
-  overflow-y: scroll;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
+.dropdown.closed .dropdown-items {
+  max-height: 0px;
+  visibility: hidden;
+  overflow: hidden;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  transition: max-height 0.6s ease;
+  -webkit-animation: fadeOut 0.8s ease-in backwards;
+  animation: fadeOut 0.8s ease-in backwards;
+  transform-origin: bottom center;
+}
+
 .dropdown.active .dropdown-items {
-  -webkit-animation: growDown 600ms ease-in-out forwards;
-  animation: growDown 600ms ease-in-out forwards;
+  height: auto;
+  max-height: 50vh;
+  visibility: visible;
+  overflow-y: scroll;
+
+  -webkit-animation: revealDown 600ms ease-in-out forwards;
+  animation: revealDown 600ms ease-in-out forwards;
   transform-origin: top center;
 }
 
-@keyframes growDown {
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes revealDown {
   0% {
     transform: scaleY(0);
   }
