@@ -1,3 +1,7 @@
+.history-logo {
+  fill: var(--color-value);
+}
+
 .history-item {
   height: 45px;
   font-size: 25px;
