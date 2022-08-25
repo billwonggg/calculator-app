@@ -1,6 +1,8 @@
 .history-logo {
+  position: relative;
+  top: 6px;
   fill: var(--color-value);
-  transform: scale(1.3);
+  transform: scale(1.15);
 }
 
 .history-item {
