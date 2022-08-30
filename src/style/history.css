@@ -43,9 +43,9 @@
   padding-top: 0;
   padding-bottom: 0;
 
-  transition: max-height 0.6s ease;
-  -webkit-animation: fadeOut 0.8s ease-in backwards;
-  animation: fadeOut 0.8s ease-in backwards;
+  transition: max-height 0.7s ease;
+  -webkit-animation: fadeOut 0.8s ease-in-out backwards;
+  animation: fadeOut 0.8s ease-in-out backwards;
   transform-origin: bottom center;
 }
 
@@ -53,7 +53,7 @@
   height: auto;
   max-height: 50vh;
   visibility: visible;
-  overflow-y: scroll;
+  overflow: auto;
 
   -webkit-animation: revealDown 600ms ease-in-out forwards;
   animation: revealDown 600ms ease-in-out forwards;
