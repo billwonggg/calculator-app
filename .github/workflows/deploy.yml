@@ -8,14 +8,20 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Setup Node
+        uses: actions/setup-node@master
         with:
           node-version: 16.x
-      - run: npm ci
-      - run: npm run build
-      - run: npm test
-      - uses: w9jds/firebase-action@master
+      - name: Install Dependencies
+        run: npm ci
+      - name: Build the Application
+        run: npm run build
+      - name: Test the Application
+        run: npm test
+      - name: Deployment
+        uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
         env:
