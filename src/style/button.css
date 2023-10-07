@@ -1,52 +1,38 @@
 .calc-button {
   width: 100%;
   border: none;
-  display: grid;
-  place-items: center;
-  padding: 5px 0px 0px 0px;
+  padding-top: 6px;
   font-family: "League Spartan", sans-serif;
-  font-size: 20px;
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
   outline: none;
-  transition: box-shadow 100ms ease, transform 100ms ease;
-}
-
-.calc-button:active {
-  transform: translateY(5px);
-  box-shadow: none;
 }
 
 .number {
-  font-size: 28px;
   color: var(--color-font-button-number);
   background-color: var(--color-button-number);
-  box-shadow: 0 5px 0 0 var(--color-shadow-button-number);
 }
 
-.number:hover {
+.number:active {
   background-color: var(--color-button-number-hover);
 }
 
 .operation {
-  font-size: 28px;
   color: var(--color-font-button-operation);
   background-color: var(--color-button-operation);
-  box-shadow: 0 5px 0 0 var(--color-shadow-button-operation);
 }
 
-.operation:hover {
+.operation:active {
   background-color: var(--color-button-operation-hover);
 }
 
 .delete {
   color: var(--color-font-button-del);
   background-color: var(--color-button-del);
-  box-shadow: 0 5px 0 0 var(--color-shadow-button-del);
 }
 
-.delete:hover {
+.delete:active {
   background-color: var(--color-button-del-hover);
 }
 
@@ -55,12 +41,10 @@
 }
 
 .equal {
-  font-size: 28px;
   color: var(--color-font-button-result);
   background-color: var(--color-button-result);
-  box-shadow: 0 5px 0 0 var(--color-shadow-button-result);
 }
 
-.equal:hover {
+.equal:active {
   background-color: var(--color-button-result-hover);
 }
