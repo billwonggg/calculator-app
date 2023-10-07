@@ -1,6 +1,9 @@
 .calc-button {
   width: 100%;
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-top: 6px;
   font-family: "League Spartan", sans-serif;
   font-weight: bold;
