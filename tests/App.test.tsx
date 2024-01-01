@@ -1,5 +1,6 @@
+import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
-import App from "./App";
+import App from "../src/App";
 
 // Jest DOM doesn't support window match media
 window.matchMedia =
