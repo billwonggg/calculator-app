@@ -3,7 +3,7 @@
   "version": "3.0.1",
   "private": true,
   "dependencies": {
-    "@testing-library/react": "^14.1.2",
+    "@testing-library/react": "^15.0.6",
     "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20.11.25",
     "@types/react": "^18.2.78",
