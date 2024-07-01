@@ -10,7 +10,7 @@
     "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react": "^4.2.1",
     "jest-environment-jsdom": "^29.7.0",
-    "mathjs": "^12.4.0",
+    "mathjs": "^13.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.4.4",
